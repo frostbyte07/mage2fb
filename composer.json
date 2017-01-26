@@ -1,0 +1,13 @@
+{
+  "name": "chrisqueen/mage2fb",
+  "description": "Magento 2 module that will integrate a Magento store with FaceBook's Business manager features such as the FB pixel and product catalog for dynamic ads.",
+  "type": "magento2-module",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "ChrisQueen/Mage2fb"
+      ]
+    ]
+  }
+}
