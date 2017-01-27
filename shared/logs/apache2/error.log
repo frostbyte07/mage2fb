@@ -1,0 +1,11 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Jan 27 16:33:23.150586 2017] [mpm_event:notice] [pid 45:tid 139856494581632] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jan 27 16:33:23.150891 2017] [core:notice] [pid 45:tid 139856494581632] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Fri Jan 27 16:40:36.593389 2017] [mpm_event:notice] [pid 45:tid 139856494581632] AH00491: caught SIGTERM, shutting down
+[Fri Jan 27 16:40:37.657258 2017] [mpm_event:notice] [pid 1411:tid 140705588918144] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jan 27 16:40:37.658368 2017] [core:notice] [pid 1411:tid 140705588918144] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jan 27 17:56:51.364899 2017] [mpm_event:notice] [pid 36:tid 140713480099712] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jan 27 17:56:51.365695 2017] [core:notice] [pid 36:tid 140713480099712] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jan 27 18:06:55.174702 2017] [mpm_event:notice] [pid 36:tid 140713480099712] AH00491: caught SIGTERM, shutting down
+[Fri Jan 27 18:06:56.241619 2017] [mpm_event:notice] [pid 214:tid 139718032938880] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jan 27 18:06:56.243163 2017] [core:notice] [pid 214:tid 139718032938880] AH00094: Command line: '/usr/sbin/apache2'
