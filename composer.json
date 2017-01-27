@@ -5,7 +5,7 @@
   "extra": {
     "map": [
       [
-        "*",
+        "src",
         "ChrisQueen/Mage2fb"
       ]
     ]
