@@ -2,6 +2,25 @@
   "name": "chrisqueen/mage2fb",
   "description": "Magento 2 module that will integrate a Magento store with FaceBook's Business manager features such as the FB pixel and product catalog for dynamic ads.",
   "type": "magento2-module",
+  "homepage": "https://bitbucket.org/chrisqueen/mage2fb",
+  "license": [
+    "GPL-3.0"
+  ],
+  "support": {
+    "email": "christopher.queen@gmail.com",
+    "issues": "https://bitbucket.org/chrisqueen/mage2fb/issues"
+  },
+  "authors": [
+    {
+      "name": "Christopher Queen",
+      "email": "christopher.queen@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "magento/framework": "~100.0.4",
+    "magento/magento-composer-installer": "*"
+  },
   "extra": {
     "map": [
       [
