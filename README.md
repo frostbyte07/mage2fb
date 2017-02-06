@@ -9,7 +9,7 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/5898ebfbc71294003d853a6f/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5898ebfbc71294003d853a6f)
 [![Latest Stable Version](https://poser.pugx.org/chrisqueen/mage2fb/v/stable)](https://packagist.org/packages/chrisqueen/mage2fb)
 [![License](https://poser.pugx.org/chrisqueen/mage2fb/license)](https://packagist.org/packages/chrisqueen/mage2fb)
-[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=<badge_key>)
+[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=badge_key)
 
 ### How do I get set up? ###
 
