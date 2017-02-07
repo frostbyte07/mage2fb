@@ -27,12 +27,20 @@
     "phpunit/phpcov": "3.*",
     "ext-xdebug": ">=2.4.0",
     "phpunit/php-invoker": "~1.1",
-    "browserstack/phpunit-browserstack": "dev-master"
+    "browserstack/phpunit-browserstack": "master"
   },
   "repositories": [
     {
-      "type": "vcs",
-      "url":  "https://github.com/browserstack/phpunit-browserstack.git"
+      "type": "package",
+      "package": {
+        "name": "browserstack/phpunit-browserstack",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/browserstack/phpunit-browserstack.git",
+          "type": "git",
+          "reference": "master"
+        }
+      }
     }
   ],
   "extra": {
