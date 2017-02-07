@@ -7,7 +7,6 @@ version: '2'
 services:
     web:
         container_name: magento2devbox_web_b13d041c59a1101c95485fed27e4cc4e
-        restart: always
         image: magento/magento2devbox-web:latest
         volumes:
           - "./shared/webroot:/home/magento2/magento2"
