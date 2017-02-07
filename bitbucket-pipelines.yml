@@ -14,4 +14,3 @@ pipelines:
           - mkdir -p build/cov
           - php vendor/bin/phpunit -c phpunit.xml
           - php vendor/bin/coveralls --verbose
-
