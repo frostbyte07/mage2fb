@@ -11,6 +11,7 @@
 [![License](https://poser.pugx.org/chrisqueen/mage2fb/license)](https://packagist.org/packages/chrisqueen/mage2fb)
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=badge_key)
 
+
 ### How do I get set up? ###
 
 * Summary of set up
@@ -30,3 +31,6 @@
 
 * Repo owner or admin
 * Other community or team contact
+
+### Tested Using ###
+![Browser Stack Logo.png](https://bitbucket.org/repo/qKL65o/images/1278043582-Browser%20Stack%20Logo.png)
