@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    phpunit -c phpunit.xml
+-->
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         syntaxCheck="true"
+         forceCoversAnnotation="true"
+         bootstrap="./vendor/autoload.php"
+         verbose="true">
+
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix=".php">tests/UnitTest</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory suffix=".php">tests/IntegrationTest</directory>
+        </testsuite>
+        <exclude>
+            <directory>shared</directory>
+            <directory>tests</directory>
+        </exclude>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-php" target="build/cov/coverage.cov"/>
+    </logging>
+
+
+</phpunit>
