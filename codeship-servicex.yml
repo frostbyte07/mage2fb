@@ -7,6 +7,7 @@ version: '2'
 services:
     web:
         container_name: magento2devbox_web_b13d041c59a1101c95485fed27e4cc4e
+        #restart: always
         image: magento/magento2devbox-web:latest
         volumes:
           - "./shared/webroot:/home/magento2/magento2"
@@ -54,7 +55,7 @@ services:
 
     db:
         container_name: magento2devbox_db_b13d041c59a1101c95485fed27e4cc4e
-        restart: always
+        #restart: always
         image: mysql:5.6
         ports:
           - "3306"
@@ -67,12 +68,12 @@ services:
 
     redis:
         container_name: magento2devbox_redis_b13d041c59a1101c95485fed27e4cc4e
-        restart: always
+        #restart: always
         image: redis:3.0.7
 
     rabbit:
         container_name: magento2devbox_rabbit_b13d041c59a1101c95485fed27e4cc4e
-        restart: always
+        #restart: always
         image: rabbitmq:3-management
         ports:
           - "15672"
