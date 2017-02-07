@@ -12,5 +12,5 @@ pipelines:
           - composer install --prefer-source --no-interaction
           - mkdir -p build/logs
           - mkdir -p build/cov
-          - php vendor/bin/phpunit -c phpunit.xml
-          - php vendor/bin/coveralls --verbose
+          - php phpunit -c phpunit.xml
+          - php coveralls --verbose
