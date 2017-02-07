@@ -24,6 +24,9 @@
         <testsuite name="integration">
             <directory suffix=".php">tests/IntegrationTest</directory>
         </testsuite>
+        <testsuite name="integration">
+            <directory suffix=".php">tests/BrowserTest</directory>
+        </testsuite>
         <exclude>
             <directory>shared</directory>
             <directory>tests</directory>

@@ -26,8 +26,15 @@
     "phpunit/phpunit": "5.*",
     "phpunit/phpcov": "3.*",
     "ext-xdebug": ">=2.4.0",
-    "phpunit/php-invoker": "~1.1"
+    "phpunit/php-invoker": "~1.1",
+    "browserstack/phpunit-browserstack": "dev-master"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "https://github.com/browserstack/phpunit-browserstack.git"
+    }
+  ],
   "extra": {
     "map": [
       [
