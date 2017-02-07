@@ -12,7 +12,6 @@
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=badge_key)
 
 
-
 ### How do I get set up? ###
 
 * Summary of set up
