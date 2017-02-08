@@ -9,7 +9,7 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/5898ebfbc71294003d853a6f/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5898ebfbc71294003d853a6f)
 [![Latest Stable Version](https://poser.pugx.org/chrisqueen/mage2fb/v/stable)](https://packagist.org/packages/chrisqueen/mage2fb)
 [![License](https://poser.pugx.org/chrisqueen/mage2fb/license)](https://packagist.org/packages/chrisqueen/mage2fb)
-![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=aFJsWlJTN1p3VDdnYno1UnQ3b2RQRE9Sc0JwSGNSUlkwOTdaS25mS0kxbz0tLXFzbXNaem9Gak1iMExBM1l0bjk2MkE9PQ==--45550bb34d41c03ae738975ceca6695288a70dfc)
+[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=aFJsWlJTN1p3VDdnYno1UnQ3b2RQRE9Sc0JwSGNSUlkwOTdaS25mS0kxbz0tLXFzbXNaem9Gak1iMExBM1l0bjk2MkE9PQ==--45550bb34d41c03ae738975ceca6695288a70dfc)](https://christopherqueen1:ryjsvcsqcjYZviutzEh4@www.browserstack.com/automate/builds/aedb4763cdd39981503a3b42b77598e53066048f)
 
 
 ### How do I get set up? ###
