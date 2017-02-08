@@ -3,4 +3,3 @@ composer.lock
 shared
 build
 .couscous/
-m2devbox-init.sh
