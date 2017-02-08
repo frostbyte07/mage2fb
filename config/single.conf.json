@@ -1,0 +1,16 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "user": "christopherqueen1",
+  "key": "ryjsvcsqcjYZviutzEh4",
+
+  "capabilities": {
+    "build": "0.0.2-beta",
+    "project": "chrisqueen/mage2fb",
+    "browserstack.debug": true,
+    "acceptSslCerts": true
+  },
+
+  "environments": [{
+    "browser": "chrome"
+  }]
+}
