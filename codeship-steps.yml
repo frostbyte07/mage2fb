@@ -37,7 +37,7 @@
   - command: php vendor/bin/phpunit -c phpunit.xml
   - command: php vendor/bin/coveralls --verbose
 - name: dev_docker_push
-  tag: dev
+  tag: ^dev
   type: push
   service: web
   image_name: chrisqueen/mage2fb
