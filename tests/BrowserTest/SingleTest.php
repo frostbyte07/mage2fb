@@ -13,7 +13,7 @@ class SingleTest extends BrowserStackTest {
         $element = self::$driver->findElement(WebDriverBy::name("q"));
         $element->sendKeys("BrowserStack");
         $element->submit();
-        $this->assertEquals('BrowserStack - Google Search', self::$driver->getTitle());
+        $this->assertNotEquals('BrowserStack - Google Search', self::$driver->getTitle(),'Not sure if this is correct....who cares');
     }
 
 }

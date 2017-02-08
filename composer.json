@@ -17,9 +17,7 @@
     }
   ],
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0",
-    "magento/framework": "~100.0.4",
-    "magento/magento-composer-installer": "*"
+    "php": "~5.5.0|~5.6.0|~7.0.0"
   },
   "require-dev": {
     "satooshi/php-coveralls": "dev-master",
@@ -27,22 +25,19 @@
     "phpunit/phpcov": "3.*",
     "ext-xdebug": ">=2.4.0",
     "phpunit/php-invoker": "~1.1",
-    "browserstack/phpunit-browserstack": "master"
+    "frostbyte07/phpunit-browserstack": "dev-master"
   },
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "browserstack/phpunit-browserstack",
-        "version": "master",
-        "source": {
-          "url": "https://github.com/browserstack/phpunit-browserstack.git",
-          "type": "git",
-          "reference": "master"
-        }
-      }
-    }
-  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+    },
+    "files": [
+      "vendor/frostbyte07/phpunit-browserstack/lib/globals.php"
+    ],
+    "classmap": [
+      "shared/webroot"
+    ]
+  },
   "extra": {
     "map": [
       [
