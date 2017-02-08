@@ -91,7 +91,8 @@ var Class = (function() {
     return true;
   })();
 
-  function subclass() {};
+  function subclass() {
+  }
   function create() {
     var parent = null, properties = $A(arguments);
     if (Object.isFunction(properties[0]))
@@ -1195,7 +1196,7 @@ Array.from = $A;
 
   var CONCAT_ARGUMENTS_BUGGY = (function() {
     return [].concat(arguments)[0][0] !== 1;
-  })(1,2)
+  })(1,2);
 
   if (CONCAT_ARGUMENTS_BUGGY) arrayProto.concat = concat;
 
@@ -1204,8 +1205,7 @@ Array.from = $A;
 })();
 function $H(object) {
   return new Hash(object);
-};
-
+}
 var Hash = Class.create(Enumerable, (function() {
   function initialize(object) {
     this._object = Object.isHash(object) ? object.toObject() : Object.clone(object);
@@ -1896,7 +1896,7 @@ Element._purgeElement = function(element) {
     element._prototypeUID = void 0;
     delete Element.Storage[uid];
   }
-}
+};
 
 Element.Methods = {
   visible: function(element) {
@@ -4924,7 +4924,7 @@ window.Sizzle = Sizzle;
 
 })();
 
-;(function(engine) {
+(function (engine) {
   var extendElements = Prototype.Selector.extendElements;
 
   function select(selector, scope) {

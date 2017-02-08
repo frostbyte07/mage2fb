@@ -178,7 +178,7 @@ define([
                 .addClass(this.options.loadingClass)
                 .attr({
                     'aria-busy': true
-                })
+                });
 
             if (settings && settings.showLoader) {
                 var ctx = this._getJqueryObj(settings.loaderContext);

@@ -43,8 +43,7 @@
 
 	function include(u) {
 		scripts.push(base + '/classes/' + u);
-	};
-
+	}
 	function load() {
 		var i, html = '';
 
@@ -52,8 +51,7 @@
 			html += '<script type="text/javascript" src="' + scripts[i] + '"></script>\n';
 
 		document.write(html);
-	};
-
+	}
 	// Firebug
 	if (query.debug && !("console" in window)) {
 		include('firebug/firebug-lite.js');

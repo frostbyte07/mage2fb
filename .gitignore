@@ -5,3 +5,4 @@ build
 shared/db
 shared/logs
 shared/var
+codeship.aes

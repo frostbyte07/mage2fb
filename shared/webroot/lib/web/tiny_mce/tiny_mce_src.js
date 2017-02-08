@@ -79,8 +79,7 @@
 				}
 
 				return null;
-			};
-
+			}
 			// Check document
 			nl = d.getElementsByTagName('script');
 			for (i=0; i<nl.length; i++) {
@@ -98,7 +97,7 @@
 				}
 			}
 
-			return;
+
 		},
 
 		is : function(o, t) {
@@ -377,8 +376,7 @@
 						if (win.CollectGarbage)
 							CollectGarbage();
 					}
-				};
-
+				}
 				function fakeUnload() {
 					var d = document;
 
@@ -393,8 +391,7 @@
 								unload();
 
 							d = 0;
-						};
-
+						}
 						// Fire unload when the currently loading page is stopped
 						if (d)
 							d.attachEvent('onstop', stop);
@@ -407,8 +404,7 @@
 								d.detachEvent('onstop', stop);
 						}, 0);
 					}
-				};
-
+				}
 				// Attach unload handler
 				if (win.attachEvent) {
 					win.attachEvent('onunload', unload);
@@ -911,8 +907,7 @@ tinymce.create('tinymce.util.Dispatcher', {
 		}
 
 		return '' + o;
-	};
-
+	}
 	tinymce.util.JSON = {
 		serialize: serialize,
 
@@ -947,8 +942,7 @@ tinymce.create('static tinymce.util.XHR', {
 			}
 
 			return x;
-		};
-
+		}
 		x = w.XMLHttpRequest ? new XMLHttpRequest() : get('Microsoft.XMLHTTP') || get('Msxml2.XMLHTTP');
 
 		if (x) {
@@ -974,8 +968,7 @@ tinymce.create('static tinymce.util.XHR', {
 					x = null;
 				} else
 					w.setTimeout(ready, 10);
-			};
-
+			}
 			// Syncronous request
 			if (!o.async)
 				return ready();
@@ -1105,8 +1098,7 @@ tinymce.create('static tinymce.util.XHR', {
 				});
 			}
 		});
-	};
-
+	}
 	function emptyEditorWhenDeleting(ed) {
 		ed.onKeyUp.add(function(ed, e) {
 			var keyCode = e.keyCode;
@@ -1115,18 +1107,16 @@ tinymce.create('static tinymce.util.XHR', {
 				if (ed.dom.isEmpty(ed.getBody())) {
 					ed.setContent('', {format : 'raw'});
 					ed.nodeChanged();
-					return;
+
 				}
 			}
 		});
-	};
-
+	}
 	function inputMethodFocus(ed) {
 		ed.dom.bind(ed.getDoc(), 'focusin', function() {
 			ed.selection.setRng(ed.selection.getRng());
 		});
-	};
-
+	}
 	function removeHrOnBackspace(ed) {
 		ed.onKeyDown.add(function(ed, e) {
 			if (e.keyCode === BACKSPACE) {
@@ -1160,8 +1150,7 @@ tinymce.create('static tinymce.util.XHR', {
 				}
 			});
 		}
-	};
-
+	}
 	function selectControlElements(ed) {
 		ed.onClick.add(function(ed, e) {
 			e = e.target;
@@ -1177,8 +1166,7 @@ tinymce.create('static tinymce.util.XHR', {
 
 			ed.nodeChanged();
 		});
-	};
-
+	}
 	function selectionChangeNodeChanged(ed) {
 		var lastRng, selectionTimer;
 
@@ -1275,8 +1263,7 @@ tinymce.create('static tinymce.util.XHR', {
 		elm.innerHTML = text;
 
 		return elm.textContent || elm.innerText || text;
-	};
-
+	}
 	// Build a two way lookup table for the entities
 	function buildEntitiesLookup(items, radix) {
 		var i, chr, entity, lookup = {};
@@ -1299,8 +1286,7 @@ tinymce.create('static tinymce.util.XHR', {
 
 			return lookup;
 		}
-	};
-
+	}
 	// Unpack entities lookup where the numbers are in radix 32 to reduce the size
 	namedEntities = buildEntitiesLookup(
 		'50,nbsp,51,iexcl,52,cent,53,pound,54,curren,55,yen,56,brvbar,57,sect,58,uml,59,copy,' +
@@ -1372,12 +1358,10 @@ tinymce.create('static tinymce.util.XHR', {
 				return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
 					return baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
 				});
-			};
-
+			}
 			function encodeCustomNamed(text, attr) {
 				return Entities.encodeNamed(text, attr, entities);
-			};
-
+			}
 			// Replace + with , to be compatible with previous TinyMCE versions
 			name = tinymce.makeMap(name.replace(/\+/g, ','));
 
@@ -1443,11 +1427,9 @@ tinymce.html.Styles = function(settings, schema) {
 			val = parseInt(val).toString(16);
 
 			return val.length > 1 ? val : '0' + val; // 0 -> 00
-		};
-
+		}
 		return '#' + hex(r) + hex(g) + hex(b);
-	};
-
+	}
 	return {
 		toHex : function(color) {
 			return color.replace(rgbRegExp, toHex);
@@ -1482,8 +1464,7 @@ tinymce.html.Styles = function(settings, schema) {
 				delete styles[prefix + '-right' + suffix];
 				delete styles[prefix + '-bottom' + suffix];
 				delete styles[prefix + '-left' + suffix];
-			};
-
+			}
 			function canCompress(key) {
 				var value = styles[key], i;
 
@@ -1500,8 +1481,7 @@ tinymce.html.Styles = function(settings, schema) {
 				styles[key] = value[0];
 
 				return true;
-			};
-
+			}
 			function compress2(target, a, b, c) {
 				if (!canCompress(a))
 					return;
@@ -1517,15 +1497,13 @@ tinymce.html.Styles = function(settings, schema) {
 				delete styles[a];
 				delete styles[b];
 				delete styles[c];
-			};
-
+			}
 			// Encodes the specified string by replacing all \" \' ; : with _<num>
 			function encode(str) {
 				isEncoded = true;
 
 				return encodingLookup[str];
-			};
-
+			}
 			// Decodes the specified string by replacing all _<num> with it's original value \" \' etc
 			// It will also decode the \" \' if keep_slashes is set to fale or omitted
 			function decode(str, keep_slashes) {
@@ -1622,8 +1600,7 @@ tinymce.html.Styles = function(settings, schema) {
 							css += (css.length > 0 ? ' ' : '') + name + ': ' + value + ';';
 					}
 				}
-			};
-
+			}
 			// Serialize styles according to schema
 			if (element_name && schema && schema.styles) {
 				// Serialize global styles and element specific styles
@@ -1650,8 +1627,7 @@ tinymce.html.Styles = function(settings, schema) {
 
 	function split(str, delim) {
 		return str.split(delim || ',');
-	};
-
+	}
 	function unpack(lookup, data) {
 		var key, elements = {};
 
@@ -1659,8 +1635,7 @@ tinymce.html.Styles = function(settings, schema) {
 			return value.replace(/[A-Z]+/g, function(key) {
 				return replace(lookup[key]);
 			});
-		};
-
+		}
 		// Unpack lookup
 		for (key in lookup) {
 			if (lookup.hasOwnProperty(key))
@@ -1679,8 +1654,7 @@ tinymce.html.Styles = function(settings, schema) {
 		});
 
 		return elements;
-	};
-
+	}
 	// Build a lookup table for block elements both lowercase and uppercase
 	blockElementsMap = 'h1,h2,h3,h4,h5,h6,hr,p,div,address,pre,form,table,tbody,thead,tfoot,' +
 						'th,tr,td,li,ol,ul,caption,blockquote,center,dl,dt,dd,dir,fieldset,' +
@@ -1837,8 +1811,7 @@ tinymce.html.Styles = function(settings, schema) {
 		// Converts a wildcard expression string to a regexp for example *a will become /.*a/.
 		function patternToRegExp(str) {
 			return new RegExp('^' + str.replace(/([?+*])/g, '.$1') + '$');
-		};
-
+		}
 		// Parses the specified valid_elements string and adds to the current rules
 		// This function is a bit hard to read since it's heavily optimized for speed
 		function addValidElements(valid_elements) {
@@ -1978,8 +1951,7 @@ tinymce.html.Styles = function(settings, schema) {
 					}
 				}
 			}
-		};
-
+		}
 		function setValidElements(valid_elements) {
 			elements = {};
 			patternElements = [];
@@ -1989,8 +1961,7 @@ tinymce.html.Styles = function(settings, schema) {
 			each(transitional, function(element, name) {
 				children[name] = element.children;
 			});
-		};
-
+		}
 		// Adds custom non HTML elements to the schema
 		function addCustomElements(custom_elements) {
 			var customElementRegExp = /^(~)?(.+)$/;
@@ -2016,8 +1987,7 @@ tinymce.html.Styles = function(settings, schema) {
 					});
 				});
 			}
-		};
-
+		}
 		// Adds valid children to the schema object
 		function addValidChildren(valid_children) {
 			var childRuleRegExp = /^([+\-]?)(\w+)\[([^\]]+)\]$/;
@@ -2046,8 +2016,7 @@ tinymce.html.Styles = function(settings, schema) {
 					}
 				});
 			}
-		};
-
+		}
 		function getElementRule(name) {
 			var element = elements[name], i;
 
@@ -2063,8 +2032,7 @@ tinymce.html.Styles = function(settings, schema) {
 				if (element.pattern.test(name))
 					return element;
 			}
-		};
-
+		}
 		if (!settings.valid_elements) {
 			// No valid elements defined then clone the elements from the transitional spec
 			each(transitional, function(element, name) {
@@ -2215,8 +2183,7 @@ tinymce.html.Styles = function(settings, schema) {
 					// Remove the open elements from the stack
 					stack.length = pos;
 				}
-			};
-
+			}
 			// Precompile RegExps and map objects
 			tokenRegExp = new RegExp('<(?:' +
 				'(?:!--([\\w\\W]*?)-->)|' + // Comment
@@ -2492,8 +2459,7 @@ tinymce.html.Styles = function(settings, schema) {
 					return sibling;
 			}
 		}
-	};
-
+	}
 	function Node(name, type) {
 		this.name = name;
 		this.type = type;
@@ -2886,8 +2852,7 @@ tinymce.html.Styles = function(settings, schema) {
 					}
 				}
 			}
-		};
-
+		}
 		self.filterNode = function(node) {
 			var i, name, list;
 
@@ -2983,9 +2948,8 @@ tinymce.html.Styles = function(settings, schema) {
 					}
 
 					node = next;
-				};
-			};
-
+				}
+			}
 			function createNode(name, type) {
 				var node = new Node(name, type), list;
 
@@ -2999,8 +2963,7 @@ tinymce.html.Styles = function(settings, schema) {
 				}
 
 				return node;
-			};
-
+			}
 			function removeWhitespaceBefore(node) {
 				var textNode, textVal, sibling;
 
@@ -3016,8 +2979,7 @@ tinymce.html.Styles = function(settings, schema) {
 						textNode = sibling;
 					}
 				}
-			};
-
+			}
 			parser = new tinymce.html.SaxParser({
 				validate : validate,
 				fix_self_closing : !validate, // Let the DOM parser handle <li> in <li> or <p> in <p> for better results
@@ -4328,8 +4290,7 @@ tinymce.html.Writer = function(settings) {
 				}
 
 				t.remove(e);
-			};
-
+			}
 			return this.run(e, function(e) {
 				e = t.get(e);
 
@@ -4450,8 +4411,7 @@ tinymce.html.Writer = function(settings) {
 				s = parseInt(s).toString(16);
 
 				return s.length > 1 ? s : '0' + s; // 0 -> 00
-			};
-
+			}
 			if (c) {
 				s = '#' + hex(c[1]) + hex(c[2]) + hex(c[3]);
 
@@ -4508,8 +4468,7 @@ tinymce.html.Writer = function(settings) {
 							break;
 					}
 				});
-			};
-
+			}
 			try {
 				each(t.doc.styleSheets, addClasses);
 			} catch (ex) {
@@ -4707,8 +4666,7 @@ tinymce.html.Writer = function(settings) {
 				}
 
 				return node;
-			};
-
+			}
 			if (pe && e) {
 				// Get before chunk
 				r.setStart(pe.parentNode, t.nodeIndex(pe));
@@ -4871,28 +4829,22 @@ tinymce.html.Writer = function(settings) {
 
 		function setStart(n, o) {
 			_setEndPoint(TRUE, n, o);
-		};
-
+		}
 		function setEnd(n, o) {
 			_setEndPoint(FALSE, n, o);
-		};
-
+		}
 		function setStartBefore(n) {
 			setStart(n.parentNode, nodeIndex(n));
-		};
-
+		}
 		function setStartAfter(n) {
 			setStart(n.parentNode, nodeIndex(n) + 1);
-		};
-
+		}
 		function setEndBefore(n) {
 			setEnd(n.parentNode, nodeIndex(n));
-		};
-
+		}
 		function setEndAfter(n) {
 			setEnd(n.parentNode, nodeIndex(n) + 1);
-		};
-
+		}
 		function collapse(ts) {
 			if (ts) {
 				t[END_CONTAINER] = t[START_CONTAINER];
@@ -4903,18 +4855,15 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			t.collapsed = TRUE;
-		};
-
+		}
 		function selectNode(n) {
 			setStartBefore(n);
 			setEndAfter(n);
-		};
-
+		}
 		function selectNodeContents(n) {
 			setStart(n, 0);
 			setEnd(n, n.nodeType === 1 ? n.childNodes.length : n.nodeValue.length);
-		};
-
+		}
 		function compareBoundaryPoints(h, r) {
 			var sc = t[START_CONTAINER], so = t[START_OFFSET], ec = t[END_CONTAINER], eo = t[END_OFFSET],
 			rsc = r.startContainer, rso = r.startOffset, rec = r.endContainer, reo = r.endOffset;
@@ -4934,20 +4883,16 @@ tinymce.html.Writer = function(settings) {
 			// Check END_TO_START
 			if (h === 3)
 				return _compareBoundaryPoints(sc, so, rec, reo);
-		};
-
+		}
 		function deleteContents() {
 			_traverse(DELETE);
-		};
-
+		}
 		function extractContents() {
 			return _traverse(EXTRACT);
-		};
-
+		}
 		function cloneContents() {
 			return _traverse(CLONE);
-		};
-
+		}
 		function insertNode(n) {
 			var startContainer = this[START_CONTAINER],
 				startOffset = this[START_OFFSET], nn, o;
@@ -4975,16 +4920,14 @@ tinymce.html.Writer = function(settings) {
 				else
 					startContainer.appendChild(n);
 			}
-		};
-
+		}
 		function surroundContents(n) {
 			var f = t.extractContents();
 
 			t.insertNode(n);
 			n.appendChild(f);
 			t.selectNode(n);
-		};
-
+		}
 		function cloneRange() {
 			return extend(new Range(dom), {
 				startContainer : t[START_CONTAINER],
@@ -4994,8 +4937,7 @@ tinymce.html.Writer = function(settings) {
 				collapsed : t.collapsed,
 				commonAncestorContainer : t.commonAncestorContainer
 			});
-		};
-
+		}
 		// Private methods
 
 		function _getSelectedNode(container, offset) {
@@ -5017,12 +4959,10 @@ tinymce.html.Writer = function(settings) {
 				return child;
 
 			return container;
-		};
-
+		}
 		function _isCollapsed() {
 			return (t[START_CONTAINER] == t[END_CONTAINER] && t[START_OFFSET] == t[END_OFFSET]);
-		};
-
+		}
 		function _compareBoundaryPoints(containerA, offsetA, containerB, offsetB) {
 			var c, offsetC, n, cmnRoot, childA, childB;
 
@@ -5118,8 +5058,7 @@ tinymce.html.Writer = function(settings) {
 
 				n = n.nextSibling;
 			}
-		};
-
+		}
 		function _setEndPoint(st, n, o) {
 			var ec, sc;
 
@@ -5155,8 +5094,7 @@ tinymce.html.Writer = function(settings) {
 
 			t.collapsed = _isCollapsed();
 			t.commonAncestorContainer = dom.findCommonAncestor(t[START_CONTAINER], t[END_CONTAINER]);
-		};
-
+		}
 		function _traverse(how) {
 			var c, endContainerDepth = 0, startContainerDepth = 0, p, depthDiff, startNode, endNode, sp, ep;
 
@@ -5198,9 +5136,8 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return _traverseCommonAncestors(startNode, endNode, how);
-		};
-
-		 function _traverseSameContainer(how) {
+		}
+		function _traverseSameContainer(how) {
 			var frag, s, sub, n, cnt, sibling, xferNode;
 
 			if (how != DELETE)
@@ -5251,8 +5188,7 @@ tinymce.html.Writer = function(settings) {
 				t.collapse(TRUE);
 
 			return frag;
-		};
-
+		 }
 		function _traverseCommonStartContainer(endAncestor, how) {
 			var frag, n, endIdx, cnt, sibling, xferNode;
 
@@ -5298,8 +5234,7 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return frag;
-		};
-
+		}
 		function _traverseCommonEndContainer(startAncestor, how) {
 			var frag, startIdx, n, cnt, sibling, xferNode;
 
@@ -5332,8 +5267,7 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return frag;
-		};
-
+		}
 		function _traverseCommonAncestors(startAncestor, endAncestor, how) {
 			var n, frag, commonParent, startOffset, endOffset, cnt, sibling, nextSibling;
 
@@ -5374,8 +5308,7 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return frag;
-		};
-
+		}
 		function _traverseRightBoundary(root, how) {
 			var next = _getSelectedNode(t[END_CONTAINER], t[END_OFFSET] - 1), parent, clonedParent, prevSibling, clonedChild, clonedGrandParent, isFullySelected = next != t[END_CONTAINER];
 
@@ -5410,8 +5343,7 @@ tinymce.html.Writer = function(settings) {
 
 				clonedParent = clonedGrandParent;
 			}
-		};
-
+		}
 		function _traverseLeftBoundary(root, how) {
 			var next = _getSelectedNode(t[START_CONTAINER], t[START_OFFSET]), isFullySelected = next != t[START_CONTAINER], parent, clonedParent, nextSibling, clonedChild, clonedGrandParent;
 
@@ -5446,8 +5378,7 @@ tinymce.html.Writer = function(settings) {
 
 				clonedParent = clonedGrandParent;
 			}
-		};
-
+		}
 		function _traverseNode(n, isFullySelected, isLeft, how) {
 			var txtValue, newNodeValue, oldNodeValue, offset, newNode;
 
@@ -5483,16 +5414,14 @@ tinymce.html.Writer = function(settings) {
 				return;
 
 			return n.cloneNode(FALSE);
-		};
-
+		}
 		function _traverseFullySelected(n, how) {
 			if (how != DELETE)
 				return how == CLONE ? n.cloneNode(TRUE) : n;
 
 			n.parentNode.removeChild(n);
-		};
-	};
-
+		}
+	}
 	ns.Range = Range;
 })(tinymce.dom);
 
@@ -5584,8 +5513,7 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return {node : child, position : position, offset : offset, inside : inside};
-		};
-
+		}
 		// Returns a W3C DOM compatible range object by using the IE Range API
 		function getRange() {
 			var ieRange = selection.getRng(), domRange = dom.createRng(), element, collapsed, tmpRange, element2, bookmark, fail;
@@ -5685,8 +5613,7 @@ tinymce.html.Writer = function(settings) {
 				}
 
 				domRange[start ? 'setStart' : 'setEnd'](container, textNodeOffset);
-			};
-
+			}
 			try {
 				// Find start point
 				findEndPoint(true);
@@ -5735,8 +5662,7 @@ tinymce.html.Writer = function(settings) {
 			}
 
 			return domRange;
-		};
-
+		}
 		this.getBookmark = function(type) {
 			var rng = selection.getRng(), start, end, bookmark = {};
 
@@ -5762,8 +5688,7 @@ tinymce.html.Writer = function(settings) {
 				}
 
 				return indexes;
-			};
-
+			}
 			function getBookmarkEndPoint(start) {
 				var position;
 
@@ -5776,8 +5701,7 @@ tinymce.html.Writer = function(settings) {
 						inside : position.inside
 					};
 				}
-			};
-
+			}
 			// Non ubstructive bookmark
 			if (type === 2) {
 				// Handle text selection
@@ -5810,8 +5734,7 @@ tinymce.html.Writer = function(settings) {
 				}
 
 				return node;
-			};
-
+			}
 			function setBookmarkEndPoint(start) {
 				var endPoint = bookmark[start ? 'start' : 'end'], moveLeft, moveRng, undef;
 
@@ -5833,8 +5756,7 @@ tinymce.html.Writer = function(settings) {
 					if (start)
 						rng.collapse(true);
 				}
-			};
-
+			}
 			if (bookmark.start) {
 				if (bookmark.start.ctrl) {
 					rng = body.createControlRange();
@@ -5926,8 +5848,7 @@ tinymce.html.Writer = function(settings) {
 
 		// Expose range method
 		this.getRangeAt = getRange;
-	};
-
+	}
 	// Expose the selection object
 	tinymce.dom.TridentSelection = Selection;
 })();
@@ -7399,8 +7320,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 (function(tinymce) {
 	function trimNl(s) {
 		return s.replace(/[\n\r]+/g, '');
-	};
-
+	}
 	// Shorten names
 	var is = tinymce.is, isIE = tinymce.isIE, each = tinymce.each;
 
@@ -7643,8 +7563,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				});
 
 				return index;
-			};
-
+			}
 			if (type == 2) {
 				function getLocation() {
 					var rng = t.getRng(true), root = dom.getRoot(), bookmark = {};
@@ -7675,16 +7594,14 @@ window.tinymce.dom.Sizzle = Sizzle;
 							point.push(t.dom.nodeIndex(container, normalized));
 
 						return point;
-					};
-
+					}
 					bookmark.start = getPoint(rng, true);
 
 					if (!t.isCollapsed())
 						bookmark.end = getPoint(rng);
 
 					return bookmark;
-				};
-
+				}
 				if (t.tridentSel)
 					return t.tridentSel.getBookmark(type);
 
@@ -7797,8 +7714,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 						}
 
 						return true;
-					};
-
+					}
 					if (t.tridentSel)
 						return t.tridentSel.moveToBookmark(bookmark);
 
@@ -7866,16 +7782,14 @@ window.tinymce.dom.Sizzle = Sizzle;
 								}
 							}
 						}
-					};
-
+					}
 					function addBogus(node) {
 						// Adds a bogus BR element for empty block elements or just a space on IE since it renders BR elements incorrectly
 						if (dom.isBlock(node) && !node.innerHTML)
 							node.innerHTML = !isIE ? '<br data-mce-bogus="1" />' : ' ';
 
 						return node;
-					};
-
+					}
 					// Restore start/end points
 					restoreEndPoint('start');
 					restoreEndPoint('end');
@@ -7927,8 +7841,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 								return;
 							}
 						} while (node = (start ? walker.next() : walker.prev()));
-					};
-
+					}
 					setPoint(node, 1);
 					setPoint(node);
 				}
@@ -8194,8 +8107,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				// Set endpoint if it was normalized
 				if (normalized)
 					rng['set' + (start ? 'Start' : 'End')](container, offset);
-			};
-
+			}
 			rng = self.getRng();
 
 			// Normalize the end points
@@ -8240,8 +8152,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				}
 
 				return rng;
-			};
-
+			}
 			// Fires while the selection is changing
 			function selectionChange(e) {
 				var pointRng;
@@ -8275,8 +8186,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				dom.unbind(doc, 'mouseup', endSelection);
 				dom.unbind(doc, 'mousemove', selectionChange);
 				startRng = started = 0;
-			};
-
+			}
 			// Detect when user selects outside BODY
 			dom.bind(doc, ['mousedown', 'contextmenu'], function(e) {
 				if (e.target.nodeName === 'HTML') {
@@ -8384,8 +8294,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 						.replace(/^[\r\n]*|[\r\n]*$/g, '')
 						.replace(/^\s*(\/\/\s*<!--|\/\/\s*<!\[CDATA\[|<!--|<!\[CDATA\[)[\r\n]*/g, '')
 						.replace(/\s*(\/\/\s*\]\]>|\/\/\s*-->|\]\]>|-->|\]\]-->)\s*$/g, '');
-			};
-
+			}
 			while (i--) {
 				node = nodes[i];
 				value = node.firstChild ? node.firstChild.value : '';
@@ -8581,8 +8490,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 					elm.onreadystatechange = elm.onload = elm = null;
 
 				callback();
-			};
-
+			}
 			function error() {
 				// Report the error so it's easier for people to spot loading errors
 				if (typeof(console) !== "undefined" && console.log)
@@ -8592,8 +8500,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				// A) We don't want to produce 404 errors on the server and
 				// B) the onerror event won't fire on all browsers.
 				// done();
-			};
-
+			}
 			id = dom.uniqueId();
 
 			if (tinymce.isIE6) {
@@ -8663,8 +8570,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 
 			// Add script to document
 			(document.getElementsByTagName('head')[0] || document.body).appendChild(elm);
-		};
-
+		}
 		this.isDone = function(url) {
 			return states[url] == LOADED;
 		};
@@ -8708,8 +8614,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 				});
 
 				scriptLoadedCallbacks[url] = undefined;
-			};
-
+			}
 			queueLoadedCallbacks.push({
 				func : callback,
 				scope : scope || this
@@ -8789,8 +8694,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 				}
 			}
 		}
-	};
-
+	}
 	this.current = function() {
 		return node;
 	};
@@ -8843,8 +8747,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 				}
 
 				return nodes;
-			};
-
+			}
 			function collectSiblings(node, name, end_node) {
 				var siblings = [];
 
@@ -8852,8 +8755,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 					siblings.push(node);
 
 				return siblings;
-			};
-
+			}
 			function findEndPoint(node, root) {
 				do {
 					if (node.parentNode == root)
@@ -8861,8 +8763,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 
 					node = node.parentNode;
 				} while(node);
-			};
-
+			}
 			function walkBoundary(start_node, end_node, next) {
 				var siblingName = next ? 'nextSibling' : 'previousSibling';
 
@@ -8877,8 +8778,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 						callback(exclude(siblings));
 					}
 				}
-			};
-
+			}
 			// If index based start position then resolve it
 			if (startContainer.nodeType == 1 && startContainer.hasChildNodes())
 				startContainer = startContainer.childNodes[startOffset];
@@ -8941,8 +8841,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 
 			function splitText(node, offset) {
 				return node.splitText(offset);
-			};
-
+			}
 			// Handle single text node
 			if (startContainer == endContainer && startContainer.nodeType == 3) {
 				if (startOffset > 0 && startOffset < startContainer.nodeValue.length) {
@@ -10188,8 +10087,7 @@ tinymce.create('tinymce.ui.Separator:tinymce.ui.Control', {
 					if (t.settings.onselect)
 						t.settings.onselect(v);
 				}
-			};
-
+			}
 			Event.add(t.id, 'change', onChange);
 
 			// Accessibility keyhandler
@@ -10875,8 +10773,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return f.apply(s || this, Array.prototype.slice.call(arguments, 2));
-			};
-
+			}
 			s = extend({
 				theme : "simple",
 				language : "en"
@@ -10922,8 +10819,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					case "specific_textareas":
 						function hasClass(n, c) {
 							return c.constructor === RegExp ? c.test(n.className) : DOM.hasClass(n, c);
-						};
-
+						}
 						each(DOM.select('textarea'), function(v) {
 							if (s.editor_deselector && hasClass(v, s.editor_deselector))
 								return;
@@ -11059,8 +10955,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							ed.destroy();
 							w.detachEvent('onunload', clr);
 							w = w.tinyMCE = w.tinymce = null; // IE leak
-						};
-
+						}
 						w.attachEvent('onunload', clr);
 					}
 
@@ -11419,8 +11314,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					if (!t.removed)
 						t.init();
 				});
-			};
-
+			}
 			loadScripts();
 		},
 
@@ -11495,8 +11389,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				function repaint(a, o) {
 					if (!o || !o.initial)
 						t.execCommand('mceRepaint');
-				};
-
+				}
 				t.onUndo.add(repaint);
 				t.onRedo.add(repaint);
 				t.onSetContent.add(repaint);
@@ -11999,8 +11892,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						if (ed.dom.isBlock(pn) && pn.lastChild === n)
 							ed.dom.add(pn, 'br', {'data-mce-bogus' : 1});
 					});
-				};
-
+				}
 				t.onExecCommand.add(function(ed, cmd) {
 					if (cmd === 'CreateLink')
 						fixLinks(ed);
@@ -12739,8 +12631,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					// Specific event handler
 					t[lo[e.fakeType || e.type]].dispatch(t, e, o);
 				}
-			};
-
+			}
 			// Add DOM events
 			each(lo, function(v, k) {
 				switch (k) {
@@ -12805,8 +12696,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						if (!s.object_resizing)
 							try {d.execCommand('enableObjectResizing', false, false);} catch (ex) {}
 					}
-				};
-
+				}
 				t.onBeforeExecCommand.add(setOpts);
 				t.onMouseDown.add(setOpts);
 			}
@@ -12900,8 +12790,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					});
 
 					return v;
-				};
-
+				}
 				t.onKeyUp.add(function(ed, e) {
 					var o = find(e);
 
@@ -12982,8 +12871,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				function addUndo() {
 					t.undoManager.typing = false;
 					t.undoManager.add();
-				};
-
+				}
 				dom.bind(t.getDoc(), 'focusout', function(e) {
 					if (!t.removed && t.undoManager.typing)
 						addUndo();
@@ -13146,8 +13034,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return FALSE;
-		};
-
+		}
 		function queryCommandState(command) {
 			var func;
 
@@ -13156,8 +13043,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				return func(command);
 
 			return -1;
-		};
-
+		}
 		function queryCommandValue(command) {
 			var func;
 
@@ -13166,8 +13052,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				return func(command);
 
 			return FALSE;
-		};
-
+		}
 		function addCommands(command_list, type) {
 			type = type || 'exec';
 
@@ -13176,8 +13061,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					commands[type][command] = callback;
 				});
 			});
-		};
-
+		}
 		// Expose public methods
 		tinymce.extend(this, {
 			execCommand : execCommand,
@@ -13196,24 +13080,19 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				value = null;
 
 			return editor.getDoc().execCommand(command, ui, value);
-		};
-
+		}
 		function isFormatMatch(name) {
 			return formatter.match(name);
-		};
-
+		}
 		function toggleFormat(name, value) {
 			formatter.toggle(name, value ? {value : value} : undefined);
-		};
-
+		}
 		function storeSelection(type) {
 			bookmark = selection.getBookmark(type);
-		};
-
+		}
 		function restoreSelection() {
 			selection.moveToBookmark(bookmark);
-		};
-
+		}
 		// Add execCommand overrides
 		addCommands({
 			// Ignore these, added for compatibility
@@ -13664,8 +13543,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 		function getContent() {
 			return tinymce.trim(editor.getContent({format : 'raw', no_events : 1}));
-		};
-
+		}
 		return self = {
 			typing : false,
 
@@ -13803,8 +13681,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 		if (clone)
 			return {wrapper : clone, inner : inner};
-	};
-
+	}
 	// Checks if the selection/caret is at the end of the specified block element
 	function isAtEnd(rng, par) {
 		var rng2 = par.ownerDocument.createRange();
@@ -13814,8 +13691,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 		// Get number of characters to the right of the cursor if it's zero then we are at the end and need to merge the next block element
 		return rng2.cloneContents().textContent.length == 0;
-	};
-
+	}
 	function splitList(selection, dom, li) {
 		var listBlock, block;
 
@@ -13833,8 +13709,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 		}
 
 		return TRUE;
-	};
-
+	}
 	tinymce.create('tinymce.ForceBlocks', {
 		ForceBlocks : function(ed) {
 			var t = this, s = ed.settings, elm;
@@ -13929,8 +13804,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 
 					ed.nodeChanged();
-				};
-
+				}
 				ed.onKeyUp.add(addRootBlocks);
 				ed.onClick.add(addRootBlocks);
 			}
@@ -14040,8 +13914,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					// Scroll to new position, scrollIntoView can't be used due to bug: http://bugs.webkit.org/show_bug.cgi?id=16117
 					if (divYPos > vpHeight) // It is not necessary to scroll if the DIV is inside the view port.
 						ed.getWin().scrollTo(0, divYPos);
-				};
-
+				}
 				ed.onKeyPress.add(function(ed, e) {
 					if (e.keyCode == 13 && (e.shiftKey || (s.force_br_newlines && !dom.getParent(selection.getNode(), 'h1,h2,h3,h4,h5,h6,ol,ul')))) {
 						insertBr(ed);
@@ -14299,8 +14172,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					return nl[0]; // Move caret to most inner element
 				} else
 					e.innerHTML = isOpera ? '\u00a0' : '<br />'; // Extra space for Opera so that the caret can move there
-			};
-
+			}
 			// Padd empty blocks
 			if (dom.isEmpty(bef))
 				appendStyles(bef, sn);
@@ -14910,22 +14782,18 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 		function isArray(obj) {
 			return obj instanceof Array;
-		};
-
+		}
 		function getParents(node, selector) {
 			return dom.getParents(node, selector, dom.getRoot());
-		};
-
+		}
 		function isCaretNode(node) {
 			return node.nodeType === 1 && (node.face === 'mceinline' || node.style.fontFamily === 'mceinline');
-		};
-
+		}
 		// Public functions
 
 		function get(name) {
 			return name ? formats[name] : formats;
-		};
-
+		}
 		function register(name, format) {
 			if (name) {
 				if (typeof(name) !== 'string') {
@@ -14964,8 +14832,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					formats[name] = format;
 				}
 			}
-		};
-
+		}
 		var getTextDecoration = function(node) {
 			var decoration;
 
@@ -15014,8 +14881,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return rng;
-			};
-
+			}
 			function setElementFormat(elm, fmt) {
 				fmt = fmt || format;
 
@@ -15039,7 +14905,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							dom.addClass(elm, value);
 					});
 				}
-			};
+			}
 			function adjustSelectionToVisibleSelection() {
 				function findSelectionEnd(start, end) {
 					var walker = new TreeWalker(end);
@@ -15048,8 +14914,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							return node;
 						}
 					}
-				};
-
+				}
 				// Adjust selection so that a end container with a end offset of zero is not included in the selection
 				// as this isn't visible to the user.
 				var rng = ed.selection.getRng();
@@ -15120,8 +14985,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 					return currentWrapElm;
 				}
-			};
-
+			}
 			function applyRngStyle(rng, bookmark, node_specific) {
 				var newWrappers = [], wrapName, wrapElm;
 
@@ -15208,8 +15072,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							// End the last wrapper
 							currentWrapElm = 0;
 						}
-					};
-
+					}
 					// Process siblings from range
 					each(nodes, process);
 				});
@@ -15232,8 +15095,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							}
 
 							each(tinymce.grep(node.childNodes), process);
-						};
-
+						}
 						process(node);
 					});
 				}
@@ -15251,8 +15113,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						});
 
 						return count;
-					};
-
+					}
 					function mergeStyles(node) {
 						var child, clone;
 
@@ -15273,8 +15134,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						}
 
 						return clone || node;
-					};
-
+					}
 					childCount = getChildCount(node);
 
 					// Remove empty nodes but only if there is multiple wrappers and they are not block
@@ -15337,8 +15197,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						}
 					}
 				});
-			};
-
+			}
 			if (format) {
 				if (node) {
 					if (node.nodeType) {
@@ -15372,8 +15231,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						performCaretAction('apply', name, vars);
 				}
 			}
-		};
-
+		}
 		function remove(name, vars, node) {
 			var formatList = get(name), format = formatList[0], bookmark, i, rng;
 			function moveStart(rng) {
@@ -15413,8 +15271,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						}
 					}
 				}
-			};
-
+			}
 			// Merges the styles for each node
 			function process(node) {
 				var children, i, l;
@@ -15433,8 +15290,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					for (i = 0, l = children.length; i < l; i++)
 						process(children[i]);
 				}
-			};
-
+			}
 			function findFormatRoot(container) {
 				var formatRoot;
 
@@ -15452,8 +15308,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				});
 
 				return formatRoot;
-			};
-
+			}
 			function wrapAndSplit(format_root, container, target, split) {
 				var parent, clone, lastClone, firstClone, i, formatRootParent;
 
@@ -15495,12 +15350,10 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return container;
-			};
-
+			}
 			function splitToFormatRoot(container) {
 				return wrapAndSplit(findFormatRoot(container), container, container, true);
-			};
-
+			}
 			function unwrap(start) {
 				var node = dom.get(start ? '_start' : '_end'),
 					out = node[start ? 'firstChild' : 'lastChild'];
@@ -15514,8 +15367,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				dom.remove(node, true);
 
 				return out;
-			};
-
+			}
 			function removeRngStyle(rng) {
 				var startContainer, endContainer;
 
@@ -15558,8 +15410,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						}
 					});
 				});
-			};
-
+			}
 			// Handle node
 			if (node) {
 				if (node.nodeType) {
@@ -15592,8 +15443,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			if (tinymce.isWebKit) {
 				ed.execCommand('mceCleanup');
 			}
-		};
-
+		}
 		function toggle(name, vars, node) {
 			var fmt = get(name);
 
@@ -15601,8 +15451,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				remove(name, vars, node);
 			else
 				apply(name, vars, node);
-		};
-
+		}
 		function matchNode(node, name, vars, similar) {
 			var formatList = get(name), format, i, classes;
 
@@ -15642,8 +15491,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return format;
-			};
-
+			}
 			if (formatList && node) {
 				// Check each format in list
 				for (i = 0; i < formatList.length; i++) {
@@ -15663,8 +15511,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 				}
 			}
-		};
-
+		}
 		function match(name, vars, node) {
 			var startNode;
 
@@ -15676,8 +15523,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 				// Do an exact check on the similar format element
 				return matchNode(node, name, vars);
-			};
-
+			}
 			// Check specified node
 			if (node)
 				return matchParents(node);
@@ -15695,8 +15541,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return FALSE;
-		};
-
+		}
 		function matchAll(names, vars) {
 			var startElement, matchedFormatNames = [], checkedMap = {}, i, ni, name;
 
@@ -15716,8 +15561,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			});
 
 			return matchedFormatNames;
-		};
-
+		}
 		function canApply(name) {
 			var formatList = get(name), startNode, parents, i, x, selector;
 
@@ -15740,8 +15584,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return FALSE;
-		};
-
+		}
 		// Expose to public
 		tinymce.extend(this, {
 			get : get,
@@ -15769,8 +15612,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			// Check for selector match
 			if (format.selector)
 				return dom.is(node, format.selector);
-		};
-
+		}
 		function isEq(str1, str2) {
 			str1 = str1 || '';
 			str2 = str2 || '';
@@ -15779,8 +15621,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			str2 = '' + (str2.nodeName || str2);
 
 			return str1.toLowerCase() == str2.toLowerCase();
-		};
-
+		}
 		function getStyle(node, name) {
 			var styleVal = dom.getStyle(node, name);
 
@@ -15793,8 +15634,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				styleVal = 'bold';
 
 			return '' + styleVal;
-		};
-
+		}
 		function replaceVars(value, vars) {
 			if (typeof(value) != "string")
 				value = value(vars);
@@ -15805,12 +15645,10 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return value;
-		};
-
+		}
 		function isWhiteSpaceNode(node) {
 			return node && node.nodeType === 3 && /^([\t \r\n]+|)$/.test(node.nodeValue);
-		};
-
+		}
 		function wrap(node, name, attrs) {
 			var wrapper = dom.create(name, attrs);
 
@@ -15818,8 +15656,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			wrapper.appendChild(node);
 
 			return wrapper;
-		};
-
+		}
 		function expandRng(rng, format, remove) {
 			var startContainer = rng.startContainer,
 				startOffset = rng.startOffset,
@@ -15858,8 +15695,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return container;
-			};
-
+			}
 			// This function walks down the tree to find the leaf at the selection.
 			// The offset is also returned as if node initially a leaf, the offset may be in the middle of the text node.
 			function findLeaf(node, offset) {
@@ -15936,8 +15772,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 							}
 
 							return pos;
-						};
-
+						}
 						if (container.nodeType === 3) {
 							pos = findSpace(container, offset);
 
@@ -16046,8 +15881,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 
 					return container;
-				};
-
+				}
 				// Find new startContainer/endContainer if there is better one
 				startContainer = findSelectorEndPoint(startContainer, 'previousSibling');
 				endContainer = findSelectorEndPoint(endContainer, 'nextSibling');
@@ -16085,8 +15919,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 
 					return node || container;
-				};
-
+				}
 				// Find new startContainer/endContainer if there is better one
 				startContainer = findBlockEndPoint(startContainer, 'previousSibling');
 				endContainer = findBlockEndPoint(endContainer, 'nextSibling');
@@ -16218,8 +16051,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				removeNode(node, format);
 				return TRUE;
 			}
-		};
-
+		}
 		function removeNode(node, format) {
 			var parentNode = node.parentNode, rootBlockElm;
 
@@ -16229,8 +16061,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						node = getNonWhiteSpaceSibling(node, next, inc);
 
 						return !node || (node.nodeName == 'BR' || isBlock(node));
-					};
-
+					}
 					// Append BR elements if needed before we remove the block
 					if (isBlock(node) && !isBlock(parentNode)) {
 						if (!find(node, FALSE) && !find(node.firstChild, TRUE, 1))
@@ -16262,8 +16093,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				return;
 
 			dom.remove(node, 1);
-		};
-
+		}
 		function getNonWhiteSpaceSibling(node, next, inc) {
 			if (node) {
 				next = next ? 'nextSibling' : 'previousSibling';
@@ -16273,12 +16103,10 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						return node;
 				}
 			}
-		};
-
+		}
 		function isBookmarkNode(node) {
 			return node && node.nodeType == 1 && node.getAttribute('data-mce-type') == 'bookmark';
-		};
-
+		}
 		function mergeSiblings(prev, next) {
 			var marker, sibling, tmpSibling;
 
@@ -16299,8 +16127,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					});
 
 					return attribs;
-				};
-
+				}
 				function compareObjects(obj1, obj2) {
 					var value, name;
 
@@ -16330,8 +16157,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 
 					return TRUE;
-				};
-
+				}
 				// Attribs are not the same
 				if (!compareObjects(getAttribs(node1), getAttribs(node2)))
 					return FALSE;
@@ -16341,8 +16167,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					return FALSE;
 
 				return TRUE;
-			};
-
+			}
 			// Check if next/prev exists and that they are elements
 			if (prev && next) {
 				function findElementSibling(node, sibling_name) {
@@ -16355,8 +16180,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					}
 
 					return node;
-				};
-
+				}
 				// If previous sibling is empty then jump over it
 				prev = findElementSibling(prev, 'previousSibling');
 				next = findElementSibling(next, 'nextSibling');
@@ -16383,12 +16207,10 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return next;
-		};
-
+		}
 		function isTextBlock(name) {
 			return /^(h[1-6]|p|div|pre|address|dl|dt|dd)$/.test(name);
-		};
-
+		}
 		function getContainer(rng, start) {
 			var container, offset, lastIdx, walker;
 
@@ -16415,8 +16237,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			}
 
 			return container;
-		};
-
+		}
 		function performCaretAction(type, name, vars) {
 			var invisibleChar, caretContainerId = '_mce_caret', debug = ed.settings.caret_debug;
 
@@ -16432,8 +16253,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return caretContainer;
-			};
-
+			}
 			function isCaretContainerEmpty(node, nodes) {
 				while (node) {
 					if ((node.nodeType === 3 && node.nodeValue !== invisibleChar) || node.childNodes.length > 1) {
@@ -16449,8 +16269,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 
 				return true;
-			};
-
+			}
 			// Returns any parent caret container element
 			function getParentCaretContainer(node) {
 				while (node) {
@@ -16460,8 +16279,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 					node = node.parentNode;
 				}
-			};
-
+			}
 			// Finds the first text node in the specified node
 			function findFirstTextNode(node) {
 				var walker;
@@ -16475,8 +16293,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						}
 					}
 				}
-			};
-
+			}
 			// Removes the caret container for the specified node or all on the current document
 			function removeCaretContainer(node, move_caret) {
 				var child, rng;
@@ -16507,8 +16324,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 					selection.setRng(rng);
 				}
-			};
-
+			}
 			// Applies formatting to the caret postion
 			function applyCaretFormat() {
 				var rng, caretContainer, textNode, offset, bookmark, container, text;
@@ -16556,8 +16372,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					// Move selection to text node
 					selection.setCursorLocation(textNode, offset);
 				}
-			};
-
+			}
 			function removeCaretFormat() {
 				var rng = selection.getRng(true), container, offset, bookmark,
 					hasContentAfter, node, formatNode, parents = [], i, caretContainer;
@@ -16629,8 +16444,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 					// Move selection to text node
 					selection.setCursorLocation(node, 1);
 				}
-			};
-
+			}
 			// Mark current caret container elements as bogus when getting the contents so we don't end up with empty elements
 			ed.onBeforeGetContent.addToTop(function() {
 				var nodes = [], i;
@@ -16666,7 +16480,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			} else {
 				removeCaretFormat();
 			}
-		};
+		}
 	};
 })(tinymce);
 
@@ -16683,8 +16497,7 @@ tinymce.onAddEditor.add(function(tinymce, ed) {
 			});
 
 			dom.rename(node, 'span');
-		};
-
+		}
 		filters = {
 			font : function(dom, node) {
 				replaceWithSpan(node, {
@@ -16716,8 +16529,7 @@ tinymce.onAddEditor.add(function(tinymce, ed) {
 					filters[node.nodeName.toLowerCase()](ed.dom, node);
 				});
 			}
-		};
-
+		}
 		ed.onPreProcess.add(convert);
 		ed.onSetContent.add(convert);
 

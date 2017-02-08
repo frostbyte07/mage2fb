@@ -14,8 +14,7 @@
 
 	function split(str, delim) {
 		return str.split(delim || ',');
-	};
-
+	}
 	/**
 	 * Unpacks the specified lookup and string data it will also parse it into an object
 	 * map with sub object for it's children. This will later also include the attributes.
@@ -27,8 +26,7 @@
 			return value.replace(/[A-Z]+/g, function(key) {
 				return replace(lookup[key]);
 			});
-		};
-
+		}
 		// Unpack lookup
 		for (key in lookup) {
 			if (lookup.hasOwnProperty(key))
@@ -47,8 +45,7 @@
 		});
 
 		return elements;
-	};
-
+	}
 	// Build a lookup table for block elements both lowercase and uppercase
 	blockElementsMap = 'h1,h2,h3,h4,h5,h6,hr,p,div,address,pre,form,table,tbody,thead,tfoot,' + 
 						'th,tr,td,li,ol,ul,caption,blockquote,center,dl,dt,dd,dir,fieldset,' + 
@@ -227,8 +224,7 @@
 		// Converts a wildcard expression string to a regexp for example *a will become /.*a/.
 		function patternToRegExp(str) {
 			return new RegExp('^' + str.replace(/([?+*])/g, '.$1') + '$');
-		};
-
+		}
 		// Parses the specified valid_elements string and adds to the current rules
 		// This function is a bit hard to read since it's heavily optimized for speed
 		function addValidElements(valid_elements) {
@@ -368,8 +364,7 @@
 					}
 				}
 			}
-		};
-
+		}
 		function setValidElements(valid_elements) {
 			elements = {};
 			patternElements = [];
@@ -379,8 +374,7 @@
 			each(transitional, function(element, name) {
 				children[name] = element.children;
 			});
-		};
-
+		}
 		// Adds custom non HTML elements to the schema
 		function addCustomElements(custom_elements) {
 			var customElementRegExp = /^(~)?(.+)$/;
@@ -406,8 +400,7 @@
 					});
 				});
 			}
-		};
-
+		}
 		// Adds valid children to the schema object
 		function addValidChildren(valid_children) {
 			var childRuleRegExp = /^([+\-]?)(\w+)\[([^\]]+)\]$/;
@@ -436,8 +429,7 @@
 					}
 				});
 			}
-		};
-
+		}
 		function getElementRule(name) {
 			var element = elements[name], i;
 
@@ -453,8 +445,7 @@
 				if (element.pattern.test(name))
 					return element;
 			}
-		};
-
+		}
 		if (!settings.valid_elements) {
 			// No valid elements defined then clone the elements from the transitional spec
 			each(transitional, function(element, name) {

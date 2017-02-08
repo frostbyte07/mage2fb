@@ -1,4 +1,4 @@
-# README #
+# Magento2 FB Business Manager Module #
 
 
 ### Magento 2 Project to integrate FaceBooks business manager features with Magento ###

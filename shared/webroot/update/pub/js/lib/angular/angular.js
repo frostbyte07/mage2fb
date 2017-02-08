@@ -17549,7 +17549,7 @@
                 var validator = function(value) {
                     if (attr.required && ctrl.$isEmpty(value)) {
                         ctrl.$setValidity('required', false);
-                        return;
+
                     } else {
                         ctrl.$setValidity('required', true);
                         return value;

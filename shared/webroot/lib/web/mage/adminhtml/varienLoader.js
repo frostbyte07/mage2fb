@@ -163,10 +163,10 @@ varienLoader.prototype = {
             this.callback(transport.responseText);
         }
     }
-}
+};
 
 if (!window.varienLoaderHandler)
-    var varienLoaderHandler = new Object();
+    var varienLoaderHandler = {};
 
 varienLoaderHandler.handler = {
     onCreate: function(request) {

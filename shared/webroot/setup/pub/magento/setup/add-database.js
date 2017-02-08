@@ -48,7 +48,7 @@ angular.module('add-database', ['ngStorage'])
                 $scope.$emit('validation-response', false);
                 $scope.database.submitted = true;
             }
-        }
+        };
 
         // Update 'submitted' flag
         $scope.$watch(function() { return $scope.database.$valid }, function(valid) {

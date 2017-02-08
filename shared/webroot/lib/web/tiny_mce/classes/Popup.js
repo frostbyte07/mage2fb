@@ -289,8 +289,7 @@ tinyMCEPopup = {
 		function close() {
 			t.editor.windowManager.close(window);
 			tinymce = tinyMCE = t.editor = t.params = t.dom = t.dom.doc = null; // Cleanup
-		};
-
+		}
 		if (tinymce.isOpera)
 			t.getWin().setTimeout(close, 0);
 		else
@@ -328,7 +327,7 @@ tinyMCEPopup = {
 
 			// Replace a=x with a="x" in IE
 			if (tinymce.isIE)
-				h = h.replace(/ (value|title|alt)=([^"][^\s>]+)/gi, ' $1="$2"')
+				h = h.replace(/ (value|title|alt)=([^"][^\s>]+)/gi, ' $1="$2"');
 
 			document.dir = t.editor.getParam('directionality','');
 

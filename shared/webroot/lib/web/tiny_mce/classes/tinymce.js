@@ -209,8 +209,7 @@
 				}
 
 				return null;
-			};
-
+			}
 			// Check document
 			nl = d.getElementsByTagName('script');
 			for (i=0; i<nl.length; i++) {
@@ -228,7 +227,7 @@
 				}
 			}
 
-			return;
+
 		},
 
 		/**
@@ -701,8 +700,7 @@
 						if (win.CollectGarbage)
 							CollectGarbage();
 					}
-				};
-
+				}
 				function fakeUnload() {
 					var d = document;
 
@@ -717,8 +715,7 @@
 								unload();
 
 							d = 0;
-						};
-
+						}
 						// Fire unload when the currently loading page is stopped
 						if (d)
 							d.attachEvent('onstop', stop);
@@ -731,8 +728,7 @@
 								d.detachEvent('onstop', stop);
 						}, 0);
 					}
-				};
-
+				}
 				// Attach unload handler
 				if (win.attachEvent) {
 					win.attachEvent('onunload', unload);

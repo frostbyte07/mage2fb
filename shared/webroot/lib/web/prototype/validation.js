@@ -47,7 +47,7 @@ Validator.prototype = {
             return Validator.methods[p.key] ? Validator.methods[p.key](v,elm,p.value) : true;
         }));
     }
-}
+};
 Validator.methods = {
     pattern : function(v,elm,opt) {return Validation.get('IsEmpty').test(v) || opt.test(v)},
     minLength : function(v,elm,opt) {return v.length >= opt},
@@ -67,7 +67,7 @@ Validator.methods = {
     include : function(v,elm,opt) {return $A(opt).all(function(value) {
         return Validation.get(value).test(v,elm);
     })}
-}
+};
 
 var Validation = Class.create();
 Validation.defaultOptions = {
@@ -167,7 +167,7 @@ Validation.prototype = {
         }
         return false;
     }
-}
+};
 
 Object.extend(Validation, {
     validate : function(elm, options){
@@ -346,7 +346,7 @@ Object.extend(Validation, {
         if (jQuery.mage.__){
             errorMsg = jQuery.mage.__(errorMsg);
         }
-        advice = '<div class="validation-advice" id="advice-' + name + '-' + Validation.getElmID(elm) +'" style="display:none">' + errorMsg + '</div>'
+        advice = '<div class="validation-advice" id="advice-' + name + '-' + Validation.getElmID(elm) +'" style="display:none">' + errorMsg + '</div>';
 
 
         Validation.insertAdvice(elm, advice);

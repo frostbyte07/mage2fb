@@ -60,8 +60,7 @@
 				}
 
 				return nodes;
-			};
-
+			}
 			/**
 			 * Collects siblings
 			 *
@@ -77,8 +76,7 @@
 					siblings.push(node);
 
 				return siblings;
-			};
-
+			}
 			/**
 			 * Find an end point this is the node just before the common ancestor root.
 			 *
@@ -94,8 +92,7 @@
 
 					node = node.parentNode;
 				} while(node);
-			};
-
+			}
 			function walkBoundary(start_node, end_node, next) {
 				var siblingName = next ? 'nextSibling' : 'previousSibling';
 
@@ -110,8 +107,7 @@
 						callback(exclude(siblings));
 					}
 				}
-			};
-
+			}
 			// If index based start position then resolve it
 			if (startContainer.nodeType == 1 && startContainer.hasChildNodes())
 				startContainer = startContainer.childNodes[startOffset];
@@ -180,8 +176,7 @@
 
 			function splitText(node, offset) {
 				return node.splitText(offset);
-			};
-
+			}
 			// Handle single text node
 			if (startContainer == endContainer && startContainer.nodeType == 3) {
 				if (startOffset > 0 && startOffset < startContainer.nodeValue.length) {

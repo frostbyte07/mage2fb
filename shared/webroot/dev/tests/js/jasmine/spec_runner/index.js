@@ -44,7 +44,7 @@ function init(grunt, options) {
             ],
             dsl: 'less'
         }
-    }
+    };
 
     if (options.theme) {
         themes = _.pick(themes, options.theme);

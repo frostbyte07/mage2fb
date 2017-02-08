@@ -86,7 +86,7 @@ angular.module('customize-your-store', ['ngStorage', 'ngSanitize'])
                 $scope.store.loadedAllModules = true;
                 $scope.checkIfAllAreSelected();
             }
-        }
+        };
 
         $scope.updateOnExpand = function(obj) {
             $state.loadModules();
@@ -142,7 +142,7 @@ angular.module('customize-your-store', ['ngStorage', 'ngSanitize'])
                     }
                 });
 
-        }
+        };
 
         $scope.toggleAllModules = function() {
             $scope.store.selectAll = !$scope.store.selectAll;
@@ -167,7 +167,7 @@ angular.module('customize-your-store', ['ngStorage', 'ngSanitize'])
             } else {
                 $scope.store.selectAll = false;
             }
-        }
+        };
 
         // Listens on form validate event, dispatched by parent controller
         $scope.$on('validate-' + $state.current.id, function() {
@@ -182,7 +182,7 @@ angular.module('customize-your-store', ['ngStorage', 'ngSanitize'])
                 $scope.$emit('validation-response', false);
                 $scope.customizeStore.submitted = true;
             }
-        }
+        };
 
         // Update 'submitted' flag
         $scope.$watch(function() { return $scope.customizeStore.$valid }, function(valid) {

@@ -131,8 +131,7 @@
 				}
 
 				return f.apply(s || this, Array.prototype.slice.call(arguments, 2));
-			};
-
+			}
 			s = extend({
 				theme : "simple",
 				language : "en"
@@ -178,8 +177,7 @@
 					case "specific_textareas":
 						function hasClass(n, c) {
 							return c.constructor === RegExp ? c.test(n.className) : DOM.hasClass(n, c);
-						};
-
+						}
 						each(DOM.select('textarea'), function(v) {
 							if (s.editor_deselector && hasClass(v, s.editor_deselector))
 								return;
@@ -371,8 +369,7 @@
 							ed.destroy();
 							w.detachEvent('onunload', clr);
 							w = w.tinyMCE = w.tinymce = null; // IE leak
-						};
-
+						}
 						w.attachEvent('onunload', clr);
 					}
 

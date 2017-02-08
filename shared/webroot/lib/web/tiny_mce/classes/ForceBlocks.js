@@ -38,8 +38,7 @@
 
 		if (clone)
 			return {wrapper : clone, inner : inner};
-	};
-
+	}
 	// Checks if the selection/caret is at the end of the specified block element
 	function isAtEnd(rng, par) {
 		var rng2 = par.ownerDocument.createRange();
@@ -49,8 +48,7 @@
 
 		// Get number of characters to the right of the cursor if it's zero then we are at the end and need to merge the next block element
 		return rng2.cloneContents().textContent.length == 0;
-	};
-
+	}
 	function splitList(selection, dom, li) {
 		var listBlock, block;
 
@@ -68,8 +66,7 @@
 		}
 
 		return TRUE;
-	};
-
+	}
 	/**
 	 * This is a internal class and no method in this class should be called directly form the out side.
 	 */
@@ -167,8 +164,7 @@
 					}
 
 					ed.nodeChanged();
-				};
-
+				}
 				ed.onKeyUp.add(addRootBlocks);
 				ed.onClick.add(addRootBlocks);
 			}
@@ -278,8 +274,7 @@
 					// Scroll to new position, scrollIntoView can't be used due to bug: http://bugs.webkit.org/show_bug.cgi?id=16117
 					if (divYPos > vpHeight) // It is not necessary to scroll if the DIV is inside the view port.
 						ed.getWin().scrollTo(0, divYPos);
-				};
-
+				}
 				ed.onKeyPress.add(function(ed, e) {
 					if (e.keyCode == 13 && (e.shiftKey || (s.force_br_newlines && !dom.getParent(selection.getNode(), 'h1,h2,h3,h4,h5,h6,ol,ul')))) {
 						insertBr(ed);
@@ -537,8 +532,7 @@
 					return nl[0]; // Move caret to most inner element
 				} else
 					e.innerHTML = isOpera ? '\u00a0' : '<br />'; // Extra space for Opera so that the caret can move there
-			};
-				
+			}
 			// Padd empty blocks
 			if (dom.isEmpty(bef))
 				appendStyles(bef, sn);

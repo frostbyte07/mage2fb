@@ -36,7 +36,7 @@ angular.module('complete-backup', ['ngStorage'])
             $scope.hasErrors = true;
             $rootScope.hasErrors = true;
             $scope.stopProgress();
-        }
+        };
 
         $scope.completed = false;
         $scope.hasErrors = false;

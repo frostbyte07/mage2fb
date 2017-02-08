@@ -30,12 +30,19 @@
         <exclude>
             <directory>shared</directory>
             <directory>tests</directory>
+            <directory>vendor</directory>
         </exclude>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
+
         </whitelist>
+        <exclude>
+            <directory>shared</directory>
+            <directory>tests</directory>
+            <directory>vendor</directory>
+        </exclude>
     </filter>
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>

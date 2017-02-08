@@ -231,7 +231,7 @@ function formatCurrency(price, format, showPlus){
      * when Math.abs(0).toFixed() executed on "0" number.
      * Result is "0.-0" :(
      */
-    var r = (j ? i.substr(0, j) + groupSymbol : "") + i.substr(j).replace(re, "$1" + groupSymbol) + (precision ? decimalSymbol + Math.abs(price - i).toFixed(precision).replace(/-/, 0).slice(2) : "")
+    var r = (j ? i.substr(0, j) + groupSymbol : "") + i.substr(j).replace(re, "$1" + groupSymbol) + (precision ? decimalSymbol + Math.abs(price - i).toFixed(precision).replace(/-/, 0).slice(2) : "");
     var pattern = '';
     if (format.pattern.indexOf('{sign}') == -1) {
         pattern = s + format.pattern;
@@ -240,8 +240,7 @@ function formatCurrency(price, format, showPlus){
     }
 
     return pattern.replace('%s', r).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-};
-
+}
 function expandDetails(el, childClass) {
     if (Element.hasClassName(el,'show-details')) {
         $$(childClass).each(function(item){item.hide()});
@@ -257,16 +256,16 @@ function expandDetails(el, childClass) {
 var isIE = navigator.appVersion.match(/MSIE/) == "MSIE";
 
 if (!window.Varien)
-    var Varien = new Object();
+    var Varien = {};
 
 Varien.showLoading = function(){
     var loader = $('loading-process');
     loader && loader.show();
-}
+};
 Varien.hideLoading = function(){
     var loader = $('loading-process');
     loader && loader.hide();
-}
+};
 Varien.GlobalHandlers = {
     onCreate: function() {
         Varien.showLoading();
@@ -317,7 +316,7 @@ Varien.searchForm.prototype = {
             this.field.value=this.emptyText;
         }
     }
-}
+};
 
 Varien.DateElement = Class.create();
 Varien.DateElement.prototype = {
@@ -473,7 +472,7 @@ Varien.dateRangeDate.prototype = Object.extend(new Varien.DateElement(), {
                 validate = validate && (this.fullDate >= this.minDate)
             }
             if (this.maxDate) {
-                this.maxDate = new Date(this.maxDate)
+                this.maxDate = new Date(this.maxDate);
                 this.minDate.setHours(0);
                 if (isNaN(this.maxDate)) {
                     this.maxDate = new Date();

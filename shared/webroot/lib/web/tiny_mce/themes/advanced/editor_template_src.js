@@ -904,8 +904,7 @@
 							height = startHeight + (e.screenY - startY);
 
 							t.resizeTo(width, height);
-						};
-
+						}
 						function endResize(e) {
 							// Stop listening
 							Event.remove(DOM.doc, 'mousemove', mouseMoveHandler1);
@@ -916,8 +915,7 @@
 							width = startWidth + (e.screenX - startX);
 							height = startHeight + (e.screenY - startY);
 							t.resizeTo(width, height, true);
-						};
-
+						}
 						e.preventDefault();
 
 						// Get the current rect size
@@ -967,8 +965,7 @@
 					if (func(parents[i]))
 						return parents[i];
 				}
-			};
-
+			}
 			cm.setActive('visualaid', ed.hasVisual);
 			t._updateUndoStatus(ed);
 			cm.setDisabled('outdent', !ed.queryCommandState('Outdent'));
@@ -1081,8 +1078,7 @@
 							c.displayColor(color);
 						}
 					}
-				};
-
+				}
 				updateColor('forecolor', fc);
 				updateColor('backcolor', bc);
 			}
@@ -1161,7 +1157,7 @@
 						ti += 'id: ' + v + ' ';
 
 					if (v = n.className) {
-						v = v.replace(/\b\s*(webkit|mce|Apple-)\w+\s*\b/g, '')
+						v = v.replace(/\b\s*(webkit|mce|Apple-)\w+\s*\b/g, '');
 
 						if (v) {
 							ti += 'class: ' + v + ' ';

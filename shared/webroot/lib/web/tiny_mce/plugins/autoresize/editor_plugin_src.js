@@ -62,8 +62,7 @@
 					ed.setProgressState(false);
 					ed.setProgressState(true);
 				}
-			};
-
+			}
 			t.editor = ed;
 
 			// Define minimum height

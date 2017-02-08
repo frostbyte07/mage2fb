@@ -182,8 +182,7 @@
 					if (t.settings.onselect)
 						t.settings.onselect(v);
 				}
-			};
-
+			}
 			Event.add(t.id, 'change', onChange);
 
 			// Accessibility keyhandler

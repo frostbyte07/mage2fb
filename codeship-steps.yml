@@ -1,27 +1,47 @@
-- name: chrisqueen_mage2fb
+- name: install_magento
+  tag: master
   type: serial
+  services:
+  - web
   steps:
-    - service: web
-      command: echo 'Install Magento'
-    - service: web
-      command: m2init magento:install --no-interaction
-    - service: web
-      command: echo 'Adding Magento root to the system PATH'
-    - service: web
-      command: export PATH=$PATH:/home/magento2/magento2/bin
-    - service: web
-      command: composer install --prefer-source --no-interaction
-    - service: web
-      command: echo 'Enabling ChrisQueen/FaceBookPixel Module'
-    - service: web
-      command: magento module:enable ChrisQueen_FaceBookPixel
-    - service: web
-      command: magento setup:upgrade
-    - service: web
-      command: mkdir -p build/logs
-    - service: web
-      command: mkdir -p build/cov
-    - service: web
-      command: php vendor/bin/phpunit -c phpunit.xml
-    - service: web
-      command: php vendor/bin/coveralls --verbose
+  - command: web_port=$(docker-compose port web 80)
+  - command: web_port=${web_port#*:}
+  - command: echo 'Install Magento'
+  - command: m2init magento:install --no-interaction --webserver-home-port=${web_port}
+  - command: echo 'Adding Magento root to the system PATH'
+  - command: export PATH=$PATH:/home/magento2/magento2/bin
+- name: composer_install
+  tag: ^(master|putback_dev)
+  type: serial
+  services:
+  - web
+  steps:
+  - command: composer install --prefer-source --no-interaction
+- name: enable_module
+  tag: ^(master|putbback_dev)
+  type: serial
+  services:
+  - web
+  steps:
+  - command: echo 'Enabling ChrisQueen/FaceBookPixel Module'
+  - command: magento module:enable ChrisQueen_FaceBookPixel
+  - command: magento setup:upgrade
+- name: phpunit_tests
+  tag: ^putback_dev
+  type: serial
+  services:
+  - web
+  steps:
+  - command: mkdir -p build/logs
+  - command: mkdir -p build/cov
+  - command: php vendor/bin/phpunit -c phpunit.xml
+  - command: php vendor/bin/coveralls --verbose
+- name: dev_docker_push
+  tag: dev
+  type: push
+  service: web
+  image_name: chrisqueen/mage2fb
+  image_tag: latest
+  registry: https://index.docker.io/v1/
+  encrypted_dockercfg_path: dockercfg.encrypted
+

@@ -68,8 +68,7 @@
 				});
 			}
 		});
-	};
-
+	}
 	/**
 	 * WebKit and IE doesn't empty the editor if you select all contents and hit backspace or delete. This fix will check if the body is empty
 	 * like a <h1></h1> or <p></p> and then forcefully remove all contents.
@@ -82,12 +81,11 @@
 				if (ed.dom.isEmpty(ed.getBody())) {
 					ed.setContent('', {format : 'raw'});
 					ed.nodeChanged();
-					return;
+
 				}
 			}
 		});
-	};
-
+	}
 	/**
 	 * WebKit on MacOS X has a weird issue where it some times fails to properly convert keypresses to input method keystrokes.
 	 * So a fix where we just get the range and set the range back seems to do the trick.
@@ -96,8 +94,7 @@
 		ed.dom.bind(ed.getDoc(), 'focusin', function() {
 			ed.selection.setRng(ed.selection.getRng());
 		});
-	};
-
+	}
 	/**
 	 * Backspacing in FireFox/IE from a paragraph into a horizontal rule results in a floating text node because the
 	 * browser just deletes the paragraph - the browser fails to merge the text node with a horizontal rule so it is
@@ -142,8 +139,7 @@
 				}
 			});
 		}
-	};
-
+	}
 	/**
 	 * WebKit has a bug where it isn't possible to select image, hr or anchor elements
 	 * by clicking on them so we need to fake that.
@@ -163,8 +159,7 @@
 
 			ed.nodeChanged();
 		});
-	};
-
+	}
 	/**
 	 * Fire a nodeChanged when the selection is changed on WebKit this fixes selection issues on iOS5. It only fires the nodeChange
 	 * event every 50ms since it would other wise update the UI when you type and it hogs the CPU.

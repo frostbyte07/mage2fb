@@ -45,8 +45,7 @@
 			}
 
 			return FALSE;
-		};
-
+		}
 		/**
 		 * Queries the current state for a command for example if the current selection is "bold".
 		 *
@@ -62,8 +61,7 @@
 				return func(command);
 
 			return -1;
-		};
-
+		}
 		/**
 		 * Queries the command value for example the current fontsize.
 		 *
@@ -79,8 +77,7 @@
 				return func(command);
 
 			return FALSE;
-		};
-
+		}
 		/**
 		 * Adds commands to the command collection.
 		 *
@@ -96,8 +93,7 @@
 					commands[type][command] = callback;
 				});
 			});
-		};
-
+		}
 		// Expose public methods
 		tinymce.extend(this, {
 			execCommand : execCommand,
@@ -116,24 +112,19 @@
 				value = null;
 
 			return editor.getDoc().execCommand(command, ui, value);
-		};
-
+		}
 		function isFormatMatch(name) {
 			return formatter.match(name);
-		};
-
+		}
 		function toggleFormat(name, value) {
 			formatter.toggle(name, value ? {value : value} : undefined);
-		};
-
+		}
 		function storeSelection(type) {
 			bookmark = selection.getBookmark(type);
-		};
-
+		}
 		function restoreSelection() {
 			selection.moveToBookmark(bookmark);
-		};
-
+		}
 		// Add execCommand overrides
 		addCommands({
 			// Ignore these, added for compatibility

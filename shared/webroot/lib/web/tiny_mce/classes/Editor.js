@@ -1009,8 +1009,7 @@
 					if (!t.removed)
 						t.init();
 				});
-			};
-
+			}
 			loadScripts();
 		},
 
@@ -1110,8 +1109,7 @@
 				function repaint(a, o) {
 					if (!o || !o.initial)
 						t.execCommand('mceRepaint');
-				};
-
+				}
 				t.onUndo.add(repaint);
 				t.onRedo.add(repaint);
 				t.onSetContent.add(repaint);
@@ -1690,8 +1688,7 @@
 						if (ed.dom.isBlock(pn) && pn.lastChild === n)
 							ed.dom.add(pn, 'br', {'data-mce-bogus' : 1});
 					});
-				};
-
+				}
 				t.onExecCommand.add(function(ed, cmd) {
 					if (cmd === 'CreateLink')
 						fixLinks(ed);
@@ -2888,8 +2885,7 @@
 					// Specific event handler
 					t[lo[e.fakeType || e.type]].dispatch(t, e, o);
 				}
-			};
-
+			}
 			// Add DOM events
 			each(lo, function(v, k) {
 				switch (k) {
@@ -2923,8 +2919,7 @@
 				// Opera doesn't support focus event for contentEditable elements so we need to fake it
 				function doFocus(e) {
 					t.focus(true);
-				};
-
+				}
 				dom.bind(t.getBody(), 'click', doFocus);
 				dom.bind(t.getBody(), 'keydown', doFocus);
 			}
@@ -2967,8 +2962,7 @@
 						if (!s.object_resizing)
 							try {d.execCommand('enableObjectResizing', false, false);} catch (ex) {}
 					}
-				};
-
+				}
 				t.onBeforeExecCommand.add(setOpts);
 				t.onMouseDown.add(setOpts);
 			}
@@ -3062,8 +3056,7 @@
 					});
 
 					return v;
-				};
-
+				}
 				t.onKeyUp.add(function(ed, e) {
 					var o = find(e);
 
@@ -3144,8 +3137,7 @@
 				function addUndo() {
 					t.undoManager.typing = false;
 					t.undoManager.add();
-				};
-
+				}
 				dom.bind(t.getDoc(), 'focusout', function(e) {
 					if (!t.removed && t.undoManager.typing)
 						addUndo();

@@ -9,4 +9,4 @@ web_port=${web_port#*:}
 
 echo 'Install Magento'
 
-docker-compose exec --user magento2 web m2init magento:install --no-interaction --webserver-home-port=$web_port 
+docker-compose exec --user magento2 web m2init magento:install --no-interaction --webserver-home-port=$web_port

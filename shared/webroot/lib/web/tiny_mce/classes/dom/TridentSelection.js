@@ -96,8 +96,7 @@
 			}
 
 			return {node : child, position : position, offset : offset, inside : inside};
-		};
-
+		}
 		// Returns a W3C DOM compatible range object by using the IE Range API
 		function getRange() {
 			var ieRange = selection.getRng(), domRange = dom.createRng(), element, collapsed, tmpRange, element2, bookmark, fail;
@@ -197,8 +196,7 @@
 				}
 
 				domRange[start ? 'setStart' : 'setEnd'](container, textNodeOffset);
-			};
-
+			}
 			try {
 				// Find start point
 				findEndPoint(true);
@@ -247,8 +245,7 @@
 			}
 
 			return domRange;
-		};
-
+		}
 		this.getBookmark = function(type) {
 			var rng = selection.getRng(), start, end, bookmark = {};
 
@@ -274,8 +271,7 @@
 				}
 
 				return indexes;
-			};
-
+			}
 			function getBookmarkEndPoint(start) {
 				var position;
 
@@ -288,8 +284,7 @@
 						inside : position.inside
 					};
 				}
-			};
-
+			}
 			// Non ubstructive bookmark
 			if (type === 2) {
 				// Handle text selection
@@ -322,8 +317,7 @@
 				}
 
 				return node;
-			};
-			
+			}
 			function setBookmarkEndPoint(start) {
 				var endPoint = bookmark[start ? 'start' : 'end'], moveLeft, moveRng, undef;
 
@@ -345,8 +339,7 @@
 					if (start)
 						rng.collapse(true);
 				}
-			};
-
+			}
 			if (bookmark.start) {
 				if (bookmark.start.ctrl) {
 					rng = body.createControlRange();
@@ -438,8 +431,7 @@
 
 		// Expose range method
 		this.getRangeAt = getRange;
-	};
-
+	}
 	// Expose the selection object
 	tinymce.dom.TridentSelection = Selection;
 })();

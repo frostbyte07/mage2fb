@@ -1223,8 +1223,7 @@
 				}
 
 				t.remove(e);
-			};
-
+			}
 			return this.run(e, function(e) {
 				e = t.get(e);
 
@@ -1406,8 +1405,7 @@
 				s = parseInt(s).toString(16);
 
 				return s.length > 1 ? s : '0' + s; // 0 -> 00
-			};
-
+			}
 			if (c) {
 				s = '#' + hex(c[1]) + hex(c[2]) + hex(c[3]);
 
@@ -1471,8 +1469,7 @@
 							break;
 					}
 				});
-			};
-
+			}
 			try {
 				each(t.doc.styleSheets, addClasses);
 			} catch (ex) {
@@ -1728,8 +1725,7 @@
 				}
 
 				return node;
-			};
-
+			}
 			if (pe && e) {
 				// Get before chunk
 				r.setStart(pe.parentNode, t.nodeIndex(pe));

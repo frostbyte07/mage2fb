@@ -58,8 +58,7 @@
 		}
 
 		return '' + o;
-	};
-
+	}
 	/**
 	 * JSON parser and serializer class.
 	 *

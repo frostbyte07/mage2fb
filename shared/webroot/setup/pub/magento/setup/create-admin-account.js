@@ -77,7 +77,7 @@ angular.module('create-admin-account', ['ngStorage'])
                 $scope.$emit('validation-response', false);
                 $scope.account.submitted = true;
             }
-        }
+        };
 
         // Update 'submitted' flag
         $scope.$watch(function() { return $scope.account.$valid }, function(valid) {

@@ -41,8 +41,7 @@
 					return sibling;
 			}
 		}
-	};
-
+	}
 	/**
 	 * This class is a minimalistic implementation of a DOM like node used by the DomParser class.
 	 *

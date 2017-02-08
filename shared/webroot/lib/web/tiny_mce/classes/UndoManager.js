@@ -21,8 +21,7 @@
 
 		function getContent() {
 			return tinymce.trim(editor.getContent({format : 'raw', no_events : 1}));
-		};
-
+		}
 		return self = {
 			/**
 			 * State if the user is currently typing or not. This will add a typing operation into one undo

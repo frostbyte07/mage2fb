@@ -133,8 +133,7 @@
     }
     // Aurora here does it while Canary doesn't
     return -1 < i;
-  };
-
+  }
   function sharedGet(key) {
     return this.has(key) ? this._values[i] : undefined;
   }

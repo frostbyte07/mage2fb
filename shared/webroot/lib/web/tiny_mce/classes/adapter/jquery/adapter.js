@@ -36,8 +36,7 @@
 					self.removeAttr('data-mce-style');
 
 				return fn.css.apply(self, arguments);
-			};
-
+			}
 			// Apapt the attr function to make sure that it uses the data-mce- prefixed variants
 			function attr(name, value) {
 				var self = this;
@@ -57,8 +56,7 @@
 
 				// Default behavior
 				return fn.attr.apply(self, arguments);
-			};
-
+			}
 			function htmlPatchFunc(func) {
 				// Returns a modified function that processes
 				// the HTML before executing the action this makes sure
@@ -69,8 +67,7 @@
 
 					return func.call(this, content);
 				};
-			};
-
+			}
 			// Patch various jQuery functions to handle tinymce specific attribute and content behavior
 			// we don't patch the jQuery.fn directly since it will most likely break compatibility
 			// with other jQuery logic on the page. Only instances created by TinyMCE should be patched.
@@ -98,8 +95,7 @@
 				}
 
 				return jq;
-			};
-
+			}
 			// Add a $ function on each editor instance this one is scoped for the editor document object
 			// this way you can do chaining like this tinymce.get(0).$('p').append('text').css('color', 'red');
 			editor.$ = function(selector, scope) {

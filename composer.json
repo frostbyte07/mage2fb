@@ -35,7 +35,7 @@
       "vendor/frostbyte07/phpunit-browserstack/lib/globals.php"
     ],
     "classmap": [
-      "shared/webroot"
+      "shared_bck/webroot"
     ]
   },
   "extra": {

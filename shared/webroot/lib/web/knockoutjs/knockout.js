@@ -511,7 +511,7 @@ ko.utils = (function () {
             var result = [];
             for (var i = 0, j = arrayLikeObject.length; i < j; i++) {
                 result.push(arrayLikeObject[i]);
-            };
+            }
             return result;
         },
 
@@ -528,7 +528,7 @@ ko.utils = (function () {
             for (var i = fields.length - 1; i >= 0; i--) {
                 if (isMatchingField(fields[i]))
                     matches.push(fields[i]);
-            };
+            }
             return matches;
         },
 
@@ -1061,7 +1061,7 @@ ko.subscribable = function () {
     ko.utils.setPrototypeOfOrExtend(this, ko.subscribable['fn']);
     this._subscriptions = {};
     this._versionNumber = 1;
-}
+};
 
 var defaultEvent = "change";
 
@@ -1297,15 +1297,15 @@ ko.observable = function (initialValue) {
 
     if (DEBUG) observable._latestValue = _latestValue;
     observable.peek = function() { return _latestValue };
-    observable.valueHasMutated = function () { observable["notifySubscribers"](_latestValue); }
-    observable.valueWillMutate = function () { observable["notifySubscribers"](_latestValue, "beforeChange"); }
+    observable.valueHasMutated = function () { observable["notifySubscribers"](_latestValue); };
+    observable.valueWillMutate = function () { observable["notifySubscribers"](_latestValue, "beforeChange"); };
 
     ko.exportProperty(observable, 'peek', observable.peek);
     ko.exportProperty(observable, "valueHasMutated", observable.valueHasMutated);
     ko.exportProperty(observable, "valueWillMutate", observable.valueWillMutate);
 
     return observable;
-}
+};
 
 ko.observable['fn'] = {
     "equalityComparer": valuesArePrimitiveAndEqual
@@ -1328,7 +1328,7 @@ ko.hasPrototype = function(instance, prototype) {
 
 ko.isObservable = function (instance) {
     return ko.hasPrototype(instance, ko.observable);
-}
+};
 ko.isWriteableObservable = function (instance) {
     // Observable
     if ((typeof instance == "function") && instance[protoProperty] === ko.observable)
@@ -1338,7 +1338,7 @@ ko.isWriteableObservable = function (instance) {
         return true;
     // Anything else
     return false;
-}
+};
 
 
 ko.exportSymbol('observable', ko.observable);
@@ -1988,7 +1988,7 @@ ko.pureComputed = function (evaluatorFunctionOrOptions, evaluatorFunctionTarget)
         evaluatorFunctionOrOptions['pure'] = true;
         return ko.computed(evaluatorFunctionOrOptions, evaluatorFunctionTarget);
     }
-}
+};
 ko.exportSymbol('pureComputed', ko.pureComputed);
 
 (function() {
@@ -2059,13 +2059,11 @@ ko.exportSymbol('pureComputed', ko.pureComputed);
                 visitorCallback(propertyName);
             }
         }
-    };
-
+    }
     function objectLookup() {
         this.keys = [];
         this.values = [];
-    };
-
+    }
     objectLookup.prototype = {
         constructor: objectLookup,
         save: function(key, value) {
@@ -2732,7 +2730,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
                 });
             };
         }
-    }
+    };
 
     // Extend the binding context hierarchy with a new view model object. If the parent context is watching
     // any obsevables, the new child context will automatically get a dependency on the parent context.
@@ -3017,8 +3015,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         return {
             'shouldBindDescendants': bindingHandlerThatControlsDescendantBindings === undefined
         };
-    };
-
+    }
     var storedBindingContextDomDataKey = ko.utils.domData.nextKey();
     ko.storedBindingContextForNode = function (node, bindingContext) {
         if (arguments.length == 2) {
@@ -3028,7 +3025,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         } else {
             return ko.utils.domData.get(node, storedBindingContextDomDataKey);
         }
-    }
+    };
 
     function getBindingContext(viewModelOrBindingContext) {
         return viewModelOrBindingContext && (viewModelOrBindingContext instanceof ko.bindingContext)
@@ -3257,16 +3254,16 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         }
 
         defaultConfigRegistry[componentName] = config;
-    }
+    };
 
     ko.components.isRegistered = function(componentName) {
         return componentName in defaultConfigRegistry;
-    }
+    };
 
     ko.components.unregister = function(componentName) {
         delete defaultConfigRegistry[componentName];
         ko.components.clearCachedDefinition(componentName);
-    }
+    };
 
     ko.components.defaultLoader = {
         'getConfig': function(componentName, callback) {
@@ -3489,7 +3486,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         }
 
         return allBindings;
-    }
+    };
 
     var nativeBindingProviderInstance = new ko.bindingProvider();
 
@@ -3744,8 +3741,7 @@ ko.bindingHandlers['checked'] = {
             } else {
                 ko.expressionRewriting.writeValueToProperty(modelValue, allBindings, 'checked', elemValue, true);
             }
-        };
-
+        }
         function updateView() {
             // This updates the view value from the model value.
             // It runs in response to changes in the bound (checked) value.
@@ -3761,8 +3757,7 @@ ko.bindingHandlers['checked'] = {
                 // For radio buttons, being checked means that the radio button's value corresponds to the model value
                 element.checked = (checkedValue() === modelValue);
             }
-        };
-
+        }
         var isCheckbox = element.type == "checkbox",
             isRadio = element.type == "radio";
 
@@ -4475,7 +4470,7 @@ ko.bindingHandlers['value'] = {
             var modelValue = valueAccessor();
             var elementValue = ko.selectExtensions.readValue(element);
             ko.expressionRewriting.writeValueToProperty(modelValue, allBindings, 'value', elementValue);
-        }
+        };
 
         // Workaround for https://github.com/SteveSanderson/knockout/issues/122
         // IE doesn't fire "change" events on textboxes if the user selects a value from its autocomplete list
@@ -4734,7 +4729,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
 
     ko.templateSources.domElement = function(element) {
         this.domElement = element;
-    }
+    };
 
     ko.templateSources.domElement.prototype['text'] = function(/* valueToWrite */) {
         var tagNameLower = ko.utils.tagNameLower(this.domElement),
@@ -4770,7 +4765,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
     var anonymousTemplatesDomDataKey = ko.utils.domData.nextKey();
     ko.templateSources.anonymousTemplate = function(element) {
         this.domElement = element;
-    }
+    };
     ko.templateSources.anonymousTemplate.prototype = new ko.templateSources.domElement();
     ko.templateSources.anonymousTemplate.prototype.constructor = ko.templateSources.anonymousTemplate;
     ko.templateSources.anonymousTemplate.prototype['text'] = function(/* valueToWrite */) {
@@ -4804,7 +4799,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
         if ((templateEngine != undefined) && !(templateEngine instanceof ko.templateEngine))
             throw new Error("templateEngine must inherit from ko.templateEngine");
         _templateEngine = templateEngine;
-    }
+    };
 
     function invokeForEachNodeInContinuousRange(firstNode, lastNode, action) {
         var node, nextInQueue = firstNode, firstOutOfRangeNode = ko.virtualElements.nextSibling(lastNode);
@@ -4979,7 +4974,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
 
             var templateName = resolveTemplateName(template, arrayValue, arrayItemContext);
             return executeTemplate(null, "ignoreTargetNode", templateName, arrayItemContext, options);
-        }
+        };
 
         // This will be called whenever setDomNodeChildrenFromArrayMapping has added nodes to targetNode
         var activateBindingsCallback = function(arrayValue, addedNodesArray, index) {
@@ -5365,7 +5360,7 @@ ko.exportSymbol('utils.compareArrays', ko.utils.compareArrays);
 ko.exportSymbol('utils.setDomNodeChildrenFromArrayMapping', ko.utils.setDomNodeChildrenFromArrayMapping);
 ko.nativeTemplateEngine = function () {
     this['allowTemplateRewriting'] = false;
-}
+};
 
 ko.nativeTemplateEngine.prototype = new ko.templateEngine();
 ko.nativeTemplateEngine.prototype.constructor = ko.nativeTemplateEngine;

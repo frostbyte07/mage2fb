@@ -48,8 +48,7 @@ tinymce.create('static tinymce.util.XHR', {
 			}
 
 			return x;
-		};
-
+		}
 		x = w.XMLHttpRequest ? new XMLHttpRequest() : get('Microsoft.XMLHTTP') || get('Msxml2.XMLHTTP');
 
 		if (x) {
@@ -75,8 +74,7 @@ tinymce.create('static tinymce.util.XHR', {
 					x = null;
 				} else
 					w.setTimeout(ready, 10);
-			};
-
+			}
 			// Syncronous request
 			if (!o.async)
 				return ready();

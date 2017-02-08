@@ -126,8 +126,7 @@
 					}
 				}
 			}
-		};
-
+		}
 		/**
 		 * Runs the specified node though the element and attributes filters.
 		 *
@@ -267,9 +266,8 @@
 					}
 
 					node = next;
-				};
-			};
-
+				}
+			}
 			function createNode(name, type) {
 				var node = new Node(name, type), list;
 
@@ -283,8 +281,7 @@
 				}
 
 				return node;
-			};
-
+			}
 			function removeWhitespaceBefore(node) {
 				var textNode, textVal, sibling;
 
@@ -300,8 +297,7 @@
 						textNode = sibling;
 					}
 				}
-			};
-
+			}
 			parser = new tinymce.html.SaxParser({
 				validate : validate,
 				fix_self_closing : !validate, // Let the DOM parser handle <li> in <li> or <p> in <p> for better results

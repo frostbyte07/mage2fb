@@ -31,7 +31,7 @@ var varienElementMethods = {
         var elm = element;
         while(elm && elm.tagName != 'BODY') {
             if(elm.statusBar)
-                Element.addClassName($(elm.statusBar), 'changed')
+                Element.addClassName($(elm.statusBar), 'changed');
             elm = elm.parentNode;
         }
     },
@@ -57,7 +57,7 @@ var varienElementMethods = {
         }
         this.canShowElement = false;
     }
-}
+};
 
 Element.addMethods(varienElementMethods);
 
@@ -294,7 +294,7 @@ Event.pointerX = function(event){
     catch(e){
 
     }
-}
+};
 Event.pointerY = function(event){
     try{
         return event.pageY || (event.clientY +(document.documentElement.scrollTop || document.body.scrollTop));
@@ -302,7 +302,7 @@ Event.pointerY = function(event){
     catch(e){
 
     }
-}
+};
 
 /**
  * Observer that watches for dependent form elements

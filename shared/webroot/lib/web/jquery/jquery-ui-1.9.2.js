@@ -1665,8 +1665,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					inst.dropped = false; //draggable revert needs that
 				}
 
-			};
-
+			}
 		});
 
 	}
@@ -1809,8 +1808,7 @@ $.ui.plugin.add("draggable", "snap", {
 				(inst.options.snap.snap && inst.options.snap.snap.call(inst.element, event, $.extend(inst._uiHash(), { snapItem: inst.snapElements[i].item })));
 			inst.snapElements[i].snapping = (ts || bs || ls || rs || first);
 
-		};
-
+		}
 	}
 });
 
@@ -2036,7 +2034,12 @@ $.ui.ddmanager = {
 		droppablesLoop: for (var i = 0; i < m.length; i++) {
 
 			if(m[i].options.disabled || (t && !m[i].accept.call(m[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
-			for (var j=0; j < list.length; j++) { if(list[j] == m[i].element[0]) { m[i].proportions.height = 0; continue droppablesLoop; } }; //Filter out elements in the current dragged item
+			for (var j = 0; j < list.length; j++) {
+				if (list[j] == m[i].element[0]) {
+					m[i].proportions.height = 0;
+					continue droppablesLoop;
+				}
+			} //Filter out elements in the current dragged item
 			m[i].visible = m[i].element.css("display") != "none"; if(!m[i].visible) continue; 									//If the element is not visible, continue
 
 			if(type == "mousedown") m[i]._activate.call(m[i], event); //Activate the droppable if used directly from draggables
@@ -2221,8 +2224,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 				//TODO : What's going on here?
 				if ('se' == handle) {
 					axis.addClass('ui-icon ui-icon-gripsmall-diagonal-se');
-				};
-
+				}
 				//Insert into internal handles object and append to element
 				this.handles[handle] = '.ui-resizable-'+handle;
 				this.element.append(axis);
@@ -2261,7 +2263,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 				//TODO: What's that good for? There's not anything to be executed left
 				if(!$(this.handles[i]).length)
-					continue;
+
 
 			}
 		};
@@ -2566,8 +2568,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 				width: (element.width() - this.borderDif[1] - this.borderDif[3]) || 0
 			});
 
-		};
-
+		}
 	},
 
 	_renderProxy: function() {
@@ -3711,8 +3712,8 @@ $.widget("ui.sortable", $.ui.mouse, {
 					if(inst && inst != this && !inst.options.disabled) {
 						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
 					}
-				};
-			};
+				}
+			}
 		}
 
 		queries.push([$.isFunction(this.options.items) ? this.options.items.call(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
@@ -3721,8 +3722,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			queries[i][0].each(function() {
 				items.push(this);
 			});
-		};
-
+		}
 		return $(items);
 
 	},
@@ -3735,7 +3735,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			for (var j=0; j < list.length; j++) {
 				if(list[j] == item.item[0])
 					return false;
-			};
+			}
 			return true;
 		});
 
@@ -3758,8 +3758,8 @@ $.widget("ui.sortable", $.ui.mouse, {
 						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
 						this.containers.push(inst);
 					}
-				};
-			};
+				}
+			}
 		}
 
 		for (var i = queries.length - 1; i >= 0; i--) {
@@ -3777,9 +3777,8 @@ $.widget("ui.sortable", $.ui.mouse, {
 					width: 0, height: 0,
 					left: 0, top: 0
 				});
-			};
-		};
-
+			}
+		}
 	},
 
 	refreshPositions: function(fast) {
@@ -3806,8 +3805,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			var p = t.offset();
 			item.left = p.left;
 			item.top = p.top;
-		};
-
+		}
 		if(this.options.custom && this.options.custom.refreshContainers) {
 			this.options.custom.refreshContainers.call(this);
 		} else {
@@ -3817,7 +3815,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 				this.containers[i].containerCache.top = p.top;
 				this.containers[i].containerCache.width	= this.containers[i].element.outerWidth();
 				this.containers[i].containerCache.height = this.containers[i].element.outerHeight();
-			};
+			}
 		}
 
 		return this;
@@ -3848,8 +3846,12 @@ $.widget("ui.sortable", $.ui.mouse, {
 					if(className && !o.forcePlaceholderSize) return;
 
 					//If the element doesn't have a actual height by itself (without styles coming from a stylesheet), it receives the inline height from the dragged item
-					if(!p.height()) { p.height(that.currentItem.innerHeight() - parseInt(that.currentItem.css('paddingTop')||0, 10) - parseInt(that.currentItem.css('paddingBottom')||0, 10)); };
-					if(!p.width()) { p.width(that.currentItem.innerWidth() - parseInt(that.currentItem.css('paddingLeft')||0, 10) - parseInt(that.currentItem.css('paddingRight')||0, 10)); };
+					if (!p.height()) {
+						p.height(that.currentItem.innerHeight() - parseInt(that.currentItem.css('paddingTop') || 0, 10) - parseInt(that.currentItem.css('paddingBottom') || 0, 10));
+					}
+					if (!p.width()) {
+						p.width(that.currentItem.innerWidth() - parseInt(that.currentItem.css('paddingLeft') || 0, 10) - parseInt(that.currentItem.css('paddingRight') || 0, 10));
+					}
 				}
 			};
 		}
@@ -4216,7 +4218,9 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if(this.cancelHelperRemoval) {
 			if(!noPropagation) {
 				this._trigger("beforeStop", event, this._uiHash());
-				for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
+				for (var i = 0; i < delayedTriggers.length; i++) {
+					delayedTriggers[i].call(this, event);
+				} //Trigger all delayed events
 				this._trigger("stop", event, this._uiHash());
 			}
 
@@ -4232,7 +4236,9 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if(this.helper[0] != this.currentItem[0]) this.helper.remove(); this.helper = null;
 
 		if(!noPropagation) {
-			for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
+			for (var i = 0; i < delayedTriggers.length; i++) {
+				delayedTriggers[i].call(this, event);
+			} //Trigger all delayed events
 			this._trigger("stop", event, this._uiHash());
 		}
 
@@ -4264,9 +4270,8 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 })(jQuery);
 
-;(jQuery.effects || (function($, undefined) {
-
-var backCompat = $.uiBackCompat !== false,
+(jQuery.effects || (function ($, undefined) {
+	var backCompat = $.uiBackCompat !== false,
 	// prefix used for storing data on .data()
 	dataSpace = "ui-effects-";
 
@@ -9029,9 +9034,8 @@ function extendRemove(target, props) {
 		if (props[name] == null || props[name] == undefined)
 			target[name] = props[name];
 	return target;
-};
-
-/* Invoke the datepicker functionality.
+}
+	/* Invoke the datepicker functionality.
    @param  options  string - a command, optionally followed by additional parameters or
 	                Object - settings for attaching new datepicker functionality
    @return  jQuery object */

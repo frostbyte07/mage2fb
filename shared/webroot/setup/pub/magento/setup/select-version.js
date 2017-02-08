@@ -170,7 +170,7 @@ angular.module('select-version', ['ngStorage'])
             });
             $scope.selectedOption = $scope.versions[0].versionInfo;
             $scope.upgradeReadyForNext = true;
-        }
+        };
 
         $scope.update = function() {
             var selectedVersionInfo = angular.fromJson($scope.selectedOption);

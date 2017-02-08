@@ -150,7 +150,7 @@ function submitAndReloadArea(area, url) {
             onSuccess: function(transport) {
                 try {
                     if (transport.responseText.isJSON()) {
-                        var response = transport.responseText.evalJSON()
+                        var response = transport.responseText.evalJSON();
                         if (response.error) {
                             alert(response.message);
                         }
@@ -171,7 +171,7 @@ function submitAndReloadArea(area, url) {
 
 /********** MESSAGES ***********/
 function syncOnchangeValue(baseElem, distElem){
-    var compare = {baseElem:baseElem, distElem:distElem}
+    var compare = {baseElem:baseElem, distElem:distElem};
     Event.observe(baseElem, 'change', function(){
         if($(this.baseElem) && $(this.distElem)){
             $(this.distElem).value = $(this.baseElem).value;

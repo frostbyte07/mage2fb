@@ -514,7 +514,7 @@ SuggestTest.prototype.testSetTemplate = function() {
         tmpl,
         html;
 
-    tmpl = suggestInstance.templates[suggestInstance.templateName]
+    tmpl = suggestInstance.templates[suggestInstance.templateName];
 
     html = jQuery('<div />').append(tmpl({
         data: {

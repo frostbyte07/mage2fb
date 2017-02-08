@@ -55,8 +55,7 @@
 				}
 
 				return value;
-			};
-
+			}
 			fmt = fmt.replace("%D", "%m/%d/%y");
 			fmt = fmt.replace("%r", "%I:%M:%S %p");
 			fmt = fmt.replace("%Y", "" + d.getFullYear());

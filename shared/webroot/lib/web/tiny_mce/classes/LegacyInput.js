@@ -21,8 +21,7 @@ tinymce.onAddEditor.add(function(tinymce, ed) {
 			});
 
 			dom.rename(node, 'span');
-		};
-
+		}
 		filters = {
 			font : function(dom, node) {
 				replaceWithSpan(node, {
@@ -54,8 +53,7 @@ tinymce.onAddEditor.add(function(tinymce, ed) {
 					filters[node.nodeName.toLowerCase()](ed.dom, node);
 				});
 			}
-		};
-
+		}
 		ed.onPreProcess.add(convert);
 		ed.onSetContent.add(convert);
 

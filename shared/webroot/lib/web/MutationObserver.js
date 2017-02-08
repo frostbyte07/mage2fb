@@ -271,8 +271,7 @@
     record.attributeNamespace = original.attributeNamespace;
     record.oldValue = original.oldValue;
     return record;
-  };
-
+  }
   // We keep track of the two (possibly one) records used in a single mutation.
   var currentRecord, recordWithOldValue;
 

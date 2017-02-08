@@ -24,7 +24,7 @@ define([
 
         onAjaxSuccess: function(transport) {
             if (transport.responseText.isJSON()) {
-                var response = transport.responseText.evalJSON()
+                var response = transport.responseText.evalJSON();
                 if (response.error) {
                     throw response;
                 } else if (response.ajaxExpired && response.ajaxRedirect) {
@@ -58,7 +58,7 @@ define([
                 type: 'slide',
                 buttons: [],
                 opened: function () {
-                    var dialog = jQuery(this).addClass('loading magento-message')
+                    var dialog = jQuery(this).addClass('loading magento-message');
                     new Ajax.Updater($(this), widgetUrl, {evalScripts: true, onComplete: function () {
                             dialog.removeClass('loading');
                         }
@@ -288,7 +288,7 @@ define([
         getWysiwygNode: function() {
             return tinyMCE.activeEditor.selection.getNode();
         }
-    }
+    };
 
     WysiwygWidget.chooser = Class.create();
     WysiwygWidget.chooser.prototype = {

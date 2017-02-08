@@ -33,8 +33,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 				}
 			}
 		}
-	};
-
+	}
 	/**
 	 * Returns the current node.
 	 *

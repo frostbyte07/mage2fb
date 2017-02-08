@@ -48,8 +48,7 @@
 		elm.innerHTML = text;
 
 		return elm.textContent || elm.innerText || text;
-	};
-
+	}
 	// Build a two way lookup table for the entities
 	function buildEntitiesLookup(items, radix) {
 		var i, chr, entity, lookup = {};
@@ -72,8 +71,7 @@
 
 			return lookup;
 		}
-	};
-
+	}
 	// Unpack entities lookup where the numbers are in radix 32 to reduce the size
 	namedEntities = buildEntitiesLookup(
 		'50,nbsp,51,iexcl,52,cent,53,pound,54,curren,55,yen,56,brvbar,57,sect,58,uml,59,copy,' +
@@ -196,12 +194,10 @@
 				return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
 					return baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
 				});
-			};
-
+			}
 			function encodeCustomNamed(text, attr) {
 				return Entities.encodeNamed(text, attr, entities);
-			};
-
+			}
 			// Replace + with , to be compatible with previous TinyMCE versions
 			name = tinymce.makeMap(name.replace(/\+/g, ','));
 

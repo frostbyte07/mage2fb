@@ -143,7 +143,7 @@ VarienForm.prototype = {
             this.callback();
         }
     }
-}
+};
 
 RegionUpdater = Class.create();
 RegionUpdater.prototype = {
@@ -322,7 +322,7 @@ RegionUpdater.prototype = {
             }
         }
     }
-}
+};
 
 ZipUpdater = Class.create();
 ZipUpdater.prototype = {
@@ -375,4 +375,4 @@ ZipUpdater.prototype = {
             }
         }
     }
-}
+};

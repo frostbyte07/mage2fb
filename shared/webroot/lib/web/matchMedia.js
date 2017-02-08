@@ -132,8 +132,7 @@ window.mediaCheck = function(options) {
         } else if (typeof options.exit === "function") {
             options.exit();
         }
-    };
-
+    }
     mq = window.matchMedia(options.media);
 
     mq.addListener(function() {

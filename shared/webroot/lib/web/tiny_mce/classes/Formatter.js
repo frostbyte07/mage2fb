@@ -49,16 +49,13 @@
 
 		function isArray(obj) {
 			return obj instanceof Array;
-		};
-
+		}
 		function getParents(node, selector) {
 			return dom.getParents(node, selector, dom.getRoot());
-		};
-
+		}
 		function isCaretNode(node) {
 			return node.nodeType === 1 && (node.face === 'mceinline' || node.style.fontFamily === 'mceinline');
-		};
-
+		}
 		// Public functions
 
 		/**
@@ -70,8 +67,7 @@
 		 */
 		function get(name) {
 			return name ? formats[name] : formats;
-		};
-
+		}
 		/**
 		 * Registers a specific format by name.
 		 *
@@ -117,8 +113,7 @@
 					formats[name] = format;
 				}
 			}
-		};
-
+		}
 		var getTextDecoration = function(node) {
 			var decoration;
 
@@ -178,8 +173,7 @@
 				}
 
 				return rng;
-			};
-
+			}
 			function setElementFormat(elm, fmt) {
 				fmt = fmt || format;
 
@@ -203,7 +197,7 @@
 							dom.addClass(elm, value);
 					});
 				}
-			};
+			}
 			function adjustSelectionToVisibleSelection() {
 				function findSelectionEnd(start, end) {
 					var walker = new TreeWalker(end);
@@ -212,8 +206,7 @@
 							return node;
 						}
 					}
-				};
-
+				}
 				// Adjust selection so that a end container with a end offset of zero is not included in the selection
 				// as this isn't visible to the user.
 				var rng = ed.selection.getRng();
@@ -284,8 +277,7 @@
 
 					return currentWrapElm;
 				}
-			};
-
+			}
 			function applyRngStyle(rng, bookmark, node_specific) {
 				var newWrappers = [], wrapName, wrapElm;
 
@@ -375,8 +367,7 @@
 							// End the last wrapper
 							currentWrapElm = 0;
 						}
-					};
-
+					}
 					// Process siblings from range
 					each(nodes, process);
 				});
@@ -399,8 +390,7 @@
 							}
 
 							each(tinymce.grep(node.childNodes), process);
-						};
-
+						}
 						process(node);
 					});
 				}
@@ -418,8 +408,7 @@
 						});
 
 						return count;
-					};
-
+					}
 					function mergeStyles(node) {
 						var child, clone;
 
@@ -440,8 +429,7 @@
 						}
 
 						return clone || node;
-					};
-
+					}
 					childCount = getChildCount(node);
 
 					// Remove empty nodes but only if there is multiple wrappers and they are not block
@@ -504,8 +492,7 @@
 						}
 					}
 				});
-			};
-
+			}
 			if (format) {
 				if (node) {
 					if (node.nodeType) {
@@ -539,8 +526,7 @@
 						performCaretAction('apply', name, vars);
 				}
 			}
-		};
-
+		}
 		/**
 		 * Removes the specified format from the current selection or specified node.
 		 *
@@ -591,8 +577,7 @@
 						}
 					}
 				}
-			};
-
+			}
 			// Merges the styles for each node
 			function process(node) {
 				var children, i, l;
@@ -611,8 +596,7 @@
 					for (i = 0, l = children.length; i < l; i++)
 						process(children[i]);
 				}
-			};
-
+			}
 			function findFormatRoot(container) {
 				var formatRoot;
 
@@ -630,8 +614,7 @@
 				});
 
 				return formatRoot;
-			};
-
+			}
 			function wrapAndSplit(format_root, container, target, split) {
 				var parent, clone, lastClone, firstClone, i, formatRootParent;
 
@@ -673,12 +656,10 @@
 				}
 
 				return container;
-			};
-
+			}
 			function splitToFormatRoot(container) {
 				return wrapAndSplit(findFormatRoot(container), container, container, true);
-			};
-
+			}
 			function unwrap(start) {
 				var node = dom.get(start ? '_start' : '_end'),
 					out = node[start ? 'firstChild' : 'lastChild'];
@@ -692,8 +673,7 @@
 				dom.remove(node, true);
 
 				return out;
-			};
-
+			}
 			function removeRngStyle(rng) {
 				var startContainer, endContainer;
 
@@ -736,8 +716,7 @@
 						}
 					});
 				});
-			};
-
+			}
 			// Handle node
 			if (node) {
 				if (node.nodeType) {
@@ -770,8 +749,7 @@
 			if (tinymce.isWebKit) {
 				ed.execCommand('mceCleanup');
 			}
-		};
-
+		}
 		/**
 		 * Toggles the specified format on/off.
 		 *
@@ -787,8 +765,7 @@
 				remove(name, vars, node);
 			else
 				apply(name, vars, node);
-		};
-
+		}
 		/**
 		 * Return true/false if the specified node has the specified format.
 		 *
@@ -838,8 +815,7 @@
 				}
 
 				return format;
-			};
-
+			}
 			if (formatList && node) {
 				// Check each format in list
 				for (i = 0; i < formatList.length; i++) {
@@ -859,8 +835,7 @@
 					}
 				}
 			}
-		};
-
+		}
 		/**
 		 * Matches the current selection or specified node against the specified format name.
 		 *
@@ -881,8 +856,7 @@
 
 				// Do an exact check on the similar format element
 				return matchNode(node, name, vars);
-			};
-
+			}
 			// Check specified node
 			if (node)
 				return matchParents(node);
@@ -900,8 +874,7 @@
 			}
 
 			return FALSE;
-		};
-
+		}
 		/**
 		 * Matches the current selection against the array of formats and returns a new array with matching formats.
 		 *
@@ -929,8 +902,7 @@
 			});
 
 			return matchedFormatNames;
-		};
-
+		}
 		/**
 		 * Returns true/false if the specified format can be applied to the current selection or not. It will currently only check the state for selector formats, it returns true on all other format types.
 		 *
@@ -960,8 +932,7 @@
 			}
 
 			return FALSE;
-		};
-
+		}
 		// Expose to public
 		tinymce.extend(this, {
 			get : get,
@@ -997,8 +968,7 @@
 			// Check for selector match
 			if (format.selector)
 				return dom.is(node, format.selector);
-		};
-
+		}
 		/**
 		 * Compares two string/nodes regardless of their case.
 		 *
@@ -1015,8 +985,7 @@
 			str2 = '' + (str2.nodeName || str2);
 
 			return str1.toLowerCase() == str2.toLowerCase();
-		};
-
+		}
 		/**
 		 * Returns the style by name on the specified node. This method modifies the style
 		 * contents to make it more easy to match. This will resolve a few browser issues.
@@ -1038,8 +1007,7 @@
 				styleVal = 'bold';
 
 			return '' + styleVal;
-		};
-
+		}
 		/**
 		 * Replaces variables in the value. The variable format is %var.
 		 *
@@ -1058,12 +1026,10 @@
 			}
 
 			return value;
-		};
-
+		}
 		function isWhiteSpaceNode(node) {
 			return node && node.nodeType === 3 && /^([\t \r\n]+|)$/.test(node.nodeValue);
-		};
-
+		}
 		function wrap(node, name, attrs) {
 			var wrapper = dom.create(name, attrs);
 
@@ -1071,8 +1037,7 @@
 			wrapper.appendChild(node);
 
 			return wrapper;
-		};
-
+		}
 		/**
 		 * Expands the specified range like object to depending on format.
 		 *
@@ -1122,8 +1087,7 @@
 				}
 
 				return container;
-			};
-
+			}
 			// This function walks down the tree to find the leaf at the selection.
 			// The offset is also returned as if node initially a leaf, the offset may be in the middle of the text node.
 			function findLeaf(node, offset) {
@@ -1200,8 +1164,7 @@
 							}
 
 							return pos;
-						};
-
+						}
 						if (container.nodeType === 3) {
 							pos = findSpace(container, offset);
 
@@ -1310,8 +1273,7 @@
 					}
 
 					return container;
-				};
-
+				}
 				// Find new startContainer/endContainer if there is better one
 				startContainer = findSelectorEndPoint(startContainer, 'previousSibling');
 				endContainer = findSelectorEndPoint(endContainer, 'nextSibling');
@@ -1349,8 +1311,7 @@
 					}
 
 					return node || container;
-				};
-
+				}
 				// Find new startContainer/endContainer if there is better one
 				startContainer = findBlockEndPoint(startContainer, 'previousSibling');
 				endContainer = findBlockEndPoint(endContainer, 'nextSibling');
@@ -1493,8 +1454,7 @@
 				removeNode(node, format);
 				return TRUE;
 			}
-		};
-
+		}
 		/**
 		 * Removes the node and wrap it's children in paragraphs before doing so or
 		 * appends BR elements to the beginning/end of the block element if forcedRootBlocks is disabled.
@@ -1522,8 +1482,7 @@
 						node = getNonWhiteSpaceSibling(node, next, inc);
 
 						return !node || (node.nodeName == 'BR' || isBlock(node));
-					};
-
+					}
 					// Append BR elements if needed before we remove the block
 					if (isBlock(node) && !isBlock(parentNode)) {
 						if (!find(node, FALSE) && !find(node.firstChild, TRUE, 1))
@@ -1555,8 +1514,7 @@
 				return;
 
 			dom.remove(node, 1);
-		};
-
+		}
 		/**
 		 * Returns the next/previous non whitespace node.
 		 *
@@ -1575,8 +1533,7 @@
 						return node;
 				}
 			}
-		};
-
+		}
 		/**
 		 * Checks if the specified node is a bookmark node or not.
 		 *
@@ -1585,8 +1542,7 @@
 		 */
 		function isBookmarkNode(node) {
 			return node && node.nodeType == 1 && node.getAttribute('data-mce-type') == 'bookmark';
-		};
-
+		}
 		/**
 		 * Merges the next/previous sibling element if they match.
 		 *
@@ -1631,8 +1587,7 @@
 					});
 
 					return attribs;
-				};
-
+				}
 				/**
 				 * Compares two objects checks if it's key + value exists in the other one.
 				 *
@@ -1670,8 +1625,7 @@
 					}
 
 					return TRUE;
-				};
-
+				}
 				// Attribs are not the same
 				if (!compareObjects(getAttribs(node1), getAttribs(node2)))
 					return FALSE;
@@ -1681,8 +1635,7 @@
 					return FALSE;
 
 				return TRUE;
-			};
-
+			}
 			// Check if next/prev exists and that they are elements
 			if (prev && next) {
 				function findElementSibling(node, sibling_name) {
@@ -1695,8 +1648,7 @@
 					}
 
 					return node;
-				};
-
+				}
 				// If previous sibling is empty then jump over it
 				prev = findElementSibling(prev, 'previousSibling');
 				next = findElementSibling(next, 'nextSibling');
@@ -1723,8 +1675,7 @@
 			}
 
 			return next;
-		};
-
+		}
 		/**
 		 * Returns true/false if the specified node is a text block or not.
 		 *
@@ -1734,8 +1685,7 @@
 		 */
 		function isTextBlock(name) {
 			return /^(h[1-6]|p|div|pre|address|dl|dt|dd)$/.test(name);
-		};
-
+		}
 		function getContainer(rng, start) {
 			var container, offset, lastIdx, walker;
 
@@ -1762,8 +1712,7 @@
 			}
 
 			return container;
-		};
-
+		}
 		function performCaretAction(type, name, vars) {
 			var invisibleChar, caretContainerId = '_mce_caret', debug = ed.settings.caret_debug;
 
@@ -1779,8 +1728,7 @@
 				}
 
 				return caretContainer;
-			};
-
+			}
 			function isCaretContainerEmpty(node, nodes) {
 				while (node) {
 					if ((node.nodeType === 3 && node.nodeValue !== invisibleChar) || node.childNodes.length > 1) {
@@ -1796,8 +1744,7 @@
 				}
 
 				return true;
-			};
-
+			}
 			// Returns any parent caret container element
 			function getParentCaretContainer(node) {
 				while (node) {
@@ -1807,8 +1754,7 @@
 
 					node = node.parentNode;
 				}
-			};
-
+			}
 			// Finds the first text node in the specified node
 			function findFirstTextNode(node) {
 				var walker;
@@ -1822,8 +1768,7 @@
 						}
 					}
 				}
-			};
-
+			}
 			// Removes the caret container for the specified node or all on the current document
 			function removeCaretContainer(node, move_caret) {
 				var child, rng;
@@ -1854,8 +1799,7 @@
 
 					selection.setRng(rng);
 				}
-			};
-
+			}
 			// Applies formatting to the caret postion
 			function applyCaretFormat() {
 				var rng, caretContainer, textNode, offset, bookmark, container, text;
@@ -1903,8 +1847,7 @@
 					// Move selection to text node
 					selection.setCursorLocation(textNode, offset);
 				}
-			};
-
+			}
 			function removeCaretFormat() {
 				var rng = selection.getRng(true), container, offset, bookmark,
 					hasContentAfter, node, formatNode, parents = [], i, caretContainer;
@@ -1976,8 +1919,7 @@
 					// Move selection to text node
 					selection.setCursorLocation(node, 1);
 				}
-			};
-
+			}
 			// Mark current caret container elements as bogus when getting the contents so we don't end up with empty elements
 			ed.onBeforeGetContent.addToTop(function() {
 				var nodes = [], i;
@@ -2013,6 +1955,6 @@
 			} else {
 				removeCaretFormat();
 			}
-		};
+		}
 	};
 })(tinymce);

@@ -158,7 +158,7 @@ varienGrid.prototype = {
             var responseText = transport.responseText;
 
             if (transport.responseText.isJSON()) {
-                var response = transport.responseText.evalJSON()
+                var response = transport.responseText.evalJSON();
                 if (response.error) {
                     alert({
                         content: response.message

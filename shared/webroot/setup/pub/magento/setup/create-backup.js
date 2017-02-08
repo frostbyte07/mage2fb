@@ -38,7 +38,7 @@ angular.module('create-backup', ['ngStorage'])
             } else {
                 $state.go('root.start-updater-' + $state.current.type);
             }
-        }
+        };
 
         $scope.$on('nextState', function () {
             $localStorage.backupInfo = $scope.backupInfo;
@@ -68,7 +68,7 @@ angular.module('create-backup', ['ngStorage'])
                 $scope.$emit('validation-response', false);
                 $scope.backup.submitted = true;
             }
-        }
+        };
 
         // Update 'submitted' flag
         $scope.$watch(function() { return $scope.backup.$valid }, function(valid) {

@@ -63,8 +63,7 @@
 					elm.onreadystatechange = elm.onload = elm = null;
 
 				callback();
-			};
-			
+			}
 			function error() {
 				// Report the error so it's easier for people to spot loading errors
 				if (typeof(console) !== "undefined" && console.log)
@@ -74,8 +73,7 @@
 				// A) We don't want to produce 404 errors on the server and
 				// B) the onerror event won't fire on all browsers.
 				// done();
-			};
-
+			}
 			id = dom.uniqueId();
 
 			if (tinymce.isIE6) {
@@ -145,8 +143,7 @@
 
 			// Add script to document
 			(document.getElementsByTagName('head')[0] || document.body).appendChild(elm);
-		};
-
+		}
 		/**
 		 * Returns true/false if a script has been loaded or not.
 		 *
@@ -228,8 +225,7 @@
 				});
 
 				scriptLoadedCallbacks[url] = undefined;
-			};
-
+			}
 			queueLoadedCallbacks.push({
 				func : callback,
 				scope : scope || this
