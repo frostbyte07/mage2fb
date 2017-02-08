@@ -1,5 +1,7 @@
 vendor
 composer.lock
-shared
 build
 .couscous/
+shared/db
+shared/logs
+shared/var
