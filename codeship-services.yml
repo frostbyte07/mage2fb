@@ -10,13 +10,13 @@ services:
         #restart: always
         image: magento/magento2devbox-web:latest
         volumes:
-          - "./shared/webroot:/home/magento2/magento2"
-          - "~/.composer:/home/magento2/.composer"
-          - "~/.ssh:/home/magento2/.ssh"
-          - "./shared/logs/apache2:/var/log/apache2"
-          - "./shared/logs/php-fpm:/var/log/php-fpm"
-          - "./shared/.magento-cloud:/home/magento2/.magento-cloud"
-          - "./src:/home/magento2/magento2/app/code/ChrisQueen"
+          - ./shared/webroot:/home/magento2/magento2
+          - ~/.composer:/home/magento2/.composer
+          - ~/.ssh:/home/magento2/.ssh"
+          - ./shared/logs/apache2:/var/log/apache2
+          - ./shared/logs/php-fpm:/var/log/php-fpm
+          - shared/.magento-cloud:/home/magento2/.magento-cloud
+          - ./src:/home/magento2/magento2/app/code/ChrisQueen
         environment:
           - USE_SHARED_WEBROOT=1
           - SHARED_CODE_PATH="/home/magento2/magento2"
@@ -63,8 +63,8 @@ services:
           - MYSQL_ROOT_PASSWORD=root
           - MYSQL_DATABASE=magento2
         volumes:
-          - "./shared/db:/var/lib/mysql"
-          - "./shared/var/logs/mysql:/var/log/mysql"
+          - ./shared/db:/var/lib/mysql
+          - ./shared/var/logs/mysql:/var/log/mysql
 
     redis:
         container_name: magento2devbox_redis_b13d041c59a1101c95485fed27e4cc4e

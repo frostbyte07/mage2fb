@@ -6,32 +6,43 @@
   steps:
   - command: web_port=$(docker-compose port web 80)
   - command: web_port=${web_port#*:}
-  - command: echo 'Install Magento'
+## Install Magento
   - command: m2init magento:install --no-interaction --webserver-home-port=${web_port}
-  - command: echo 'Adding Magento root to the system PATH'
+## Adding Magento root to the system PATH
   - command: export PATH=$PATH:/home/magento2/magento2/bin
+- name: reset_magento
+  tag: ^dev
+  type: serial
+  services:
+  - web
+  steps:
+## Reset Magento
+  - command: web_port=$(docker-compose port web 80)
+  - command: web_port=${web_port#*:}
+  - command: m2init magento:reset --no-interaction --webserver-home-port=${web_port}
 - name: composer_install
-  tag: ^(master|putback_dev)
+  tag: ^(master|dev)
   type: serial
   services:
   - web
   steps:
-  - command: composer install --prefer-source --no-interaction
+  - command: composer install --prefer-source
 - name: enable_module
-  tag: ^(master|putbback_dev)
+  tag: ^none
   type: serial
   services:
   - web
   steps:
-  - command: echo 'Enabling ChrisQueen/FaceBookPixel Module'
+## Enabling ChrisQueen/FaceBookPixel Module ##
   - command: magento module:enable ChrisQueen_FaceBookPixel
   - command: magento setup:upgrade
 - name: phpunit_tests
-  tag: ^putback_dev
+  tag: ^dev
   type: serial
   services:
   - web
   steps:
+## Run Unit tests
   - command: mkdir -p build/logs
   - command: mkdir -p build/cov
   - command: php vendor/bin/phpunit -c phpunit.xml
@@ -41,7 +52,6 @@
   type: push
   service: web
   image_name: chrisqueen/mage2fb
-  image_tag: latest
+  image_tag: local
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
-
